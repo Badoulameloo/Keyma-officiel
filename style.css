@@ -1,0 +1,116 @@
+/* Variables de couleurs et polices */
+:root {
+    --blanc-pur: #FFFFFF;
+    --blanc-casse: #F9F7F2; /* Un ton sable très léger */
+    --gris-doux: #757575;
+    --or-pale: #D4AF37; /* Pour de petites touches d'élégance */
+    --noir-leger: #2C2C2C;
+    --font-titre: 'Playfair Display', serif;
+    --font-corps: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-corps);
+    background-color: var(--blanc-pur);
+    color: var(--noir-leger);
+    line-height: 1.6;
+}
+
+/* --- NAVIGATION --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    background-color: var(--blanc-pur);
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.logo {
+    font-family: var(--font-titre);
+    font-size: 2rem;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--noir-leger);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--or-pale);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), 
+                url('assets/hero-voile.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: var(--font-titre);
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--gris-doux);
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--noir-leger);
+    text-decoration: none;
+    color: var(--noir-leger);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    transition: all 0.4s;
+}
+
+.btn-primary:hover {
+    background-color: var(--noir-leger);
+    color: var(--blanc-pur);
+}
+
+/* --- SECTION FEATURES --- */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem 5%;
+    background-color: var(--blanc-casse);
+    text-align: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
