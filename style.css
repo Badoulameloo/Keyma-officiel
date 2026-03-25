@@ -24,14 +24,23 @@ body {
 
 /* --- NOUVELLE NAVBAR --- */
 .navbar {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; /* Force le centrage parfait */
+    display: flex;
+    justify-content: space-between; /* C'est cette ligne qui va tout écarter */
     align-items: center;
-    padding: 1.5rem 5%;
-    background: var(--blanc-pur);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 1.5rem 5%; /* 5% de marge à gauche et à droite pour respirer */
+    background-color: #fff;
+    position: relative;
+}
+
+/* Assure-toi que la partie gauche (menu) a une largeur fixe ou flexible */
+.nav-left {
+    flex: 1; /* Prend l'espace à gauche */
+}
+
+/* Le logo au centre */
+.nav-center {
+    flex: 1;
+    text-align: center;
 }
 
 /* LOGO DORÉ */
@@ -45,9 +54,13 @@ body {
     text-transform: uppercase;
 }
 
-/* PANIER NOIR */
+/* LE BLOC QUI NOUS INTÉRESSE : Icône + Panier */
 .nav-right {
-    text-align: right;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Pousse tout le contenu vers la droite */
+    align-items: center;
+    gap: 25px; /* Espace entre l'icône et le texte Panier */
 }
 
 .cart-link {
