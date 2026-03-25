@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier | KEYMA</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-left">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger"><span></span><span></span></label>
+                <ul class="menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="shop.html">Boutique</a></li>
+                    <li><a href="auth.html">Mon Compte</a></li>
+                </ul>
+            </div>
+            <div class="nav-center"><a href="index.html" class="logo-gold">KEYMA</a></div>
+            <div class="nav-right"><a href="cart.html" class="cart-link">PANIER (1)</a></div>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <h1 class="cart-title">Votre Sélection</h1>
+
+        <div class="cart-container">
+            <div class="cart-items">
+                <div class="cart-item">
+                    <div class="item-img">
+                        <img src="assets/voile-jersey.jpg" alt="Voile Jersey">
+                    </div>
+                    <div class="item-info">
+                        <h3>Voile en Jersey Premium</h3>
+                        <p class="item-color">Couleur : Blanc Cassé</p>
+                        <p class="item-price">15.000 CFA</p>
+                        <button class="btn-remove">Supprimer</button>
+                    </div>
+                    <div class="item-qty">
+                        <input type="number" value="1" min="1">
+                    </div>
+                </div>
+            </div>
+
+            <aside class="cart-summary">
+                <div class="summary-box">
+                    <h3>Résumé</h3>
+                    <div class="summary-line">
+                        <span>Sous-total</span>
+                        <span>15.000 CFA</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Livraison</span>
+                        <span>Calculée à l'étape suivante</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span>15.000 CFA</span>
+                    </div>
+                    <a href="checkout.html" class="btn-checkout">Procéder au paiement</a>
+                    <a href="shop.html" class="continue-shopping">Continuer mes achats</a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 KEYMA - La pureté du geste.</p>
+    </footer>
+
+</body>
+</html>
