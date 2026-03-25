@@ -695,27 +695,49 @@ body {
     margin-top: 1rem;
 }
 
+/* --- SECTION BOUTIQUE --- */
+.shop-page {
+    max-width: 1200px;
+    margin: 5rem auto; /* Grand espace en haut et en bas */
+    padding: 0 5%;
+}
+
+.shop-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.shop-intro {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gris-doux);
+    margin-top: 1rem;
+}
+
 /* Grille de produits */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
-    gap: 3rem;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur PC */
+    gap: 3rem; /* Espace entre les produits */
 }
 
 .product-card {
     text-align: center;
-    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Aligne le bas des cartes */
 }
 
+/* Conteneur de l'image (format portrait) */
 .product-img-wrapper {
-    position: relative;
     width: 100%;
-    aspect-ratio: 3/4; /* Format portrait élégant */
-    background-color: var(--blanc-casse);
-    overflow: hidden;
+    aspect-ratio: 3/4; /* Ratio d'image mode portrait */
+    background-color: var(--blanc-casse); /* Fond temporaire gris très clair */
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .img-placeholder {
@@ -723,17 +745,6 @@ body {
     font-family: var(--font-titre);
     font-style: italic;
     font-size: 1.2rem;
-}
-
-.product-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: white;
-    padding: 5px 15px;
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .product-info h3 {
@@ -749,32 +760,14 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.btn-add-disabled {
-    background: transparent;
-    border: 1px solid #eee;
-    color: #bbb;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: not-allowed;
-}
-
-/* Responsive Mobile */
-@media (max-width: 900px) {
-    .products-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 600px) {
-    .products-grid { grid-template-columns: 1fr; }
-}
+/* --- BOUTONS D'ACTION --- */
 .product-actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Boutons l'un au-dessus de l'autre */
     gap: 10px;
-    margin-top: 1.5rem;
 }
 
+/* Bouton Ajouter au Panier (Bordure dorée) */
 .btn-add-cart {
     background: transparent;
     border: 1px solid var(--or-pale);
@@ -792,6 +785,7 @@ body {
     color: white;
 }
 
+/* Bouton Acheter Maintenant (Noir plein) */
 .btn-buy-now {
     background: #000;
     color: #fff;
@@ -806,4 +800,13 @@ body {
 
 .btn-buy-now:hover {
     background: #333;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); } /* 2 colonnes sur tablette */
+}
+
+@media (max-width: 600px) {
+    .products-grid { grid-template-columns: 1fr; } /* 1 colonne sur mobile */
 }
