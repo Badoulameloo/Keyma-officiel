@@ -27,44 +27,26 @@
     </header>
 
     <main class="cart-page">
-        <h1 class="cart-title">Votre Sélection</h1>
+    <h1 class="cart-title">Votre Sélection</h1>
 
-        <div class="cart-container">
-            <div class="cart-items">
-                <div class="cart-item">
-                    <div class="item-img">
-                        <img src="assets/voile-jersey.jpg" alt="Voile Jersey">
-                    </div>
-                    <div class="item-info">
-                        <h3>Voile en Jersey Premium</h3>
-                        <p class="item-color">Couleur : Blanc Cassé</p>
-                        <p class="item-price">15.000 CFA</p>
-                        <button class="btn-remove">Supprimer</button>
-                    </div>
-                    <div class="item-qty">
-                        <input type="number" value="1" min="1">
-                    </div>
-                </div>
+    <div id="empty-cart-msg" style="display: none; text-align: center; padding: 50px 0;">
+        <p style="font-size: 1.2rem; color: #888; margin-bottom: 2rem;">Votre panier est actuellement vide.</p>
+        <a href="shop.html" class="btn-outline-minimal">Continuer mes achats</a>
+    </div>
+
+    <div id="cart-content" class="cart-container">
+        <div class="cart-items" id="items-list">
             </div>
 
-            <aside class="cart-summary">
-                <div class="summary-box">
-                    <h3>Résumé</h3>
-                    <div class="summary-line">
-                        <span>Sous-total</span>
-                        <span>15.000 CFA</span>
-                    </div>
-                    <div class="summary-line">
-                        <span>Livraison</span>
-                        <span>Calculée à l'étape suivante</span>
-                    </div>
-                    <div class="summary-total">
-                        <span>Total</span>
-                        <span>15.000 CFA</span>
-                    </div>
-                    <a href="checkout.html" class="btn-checkout">Procéder au paiement</a>
-                    <a href="shop.html" class="continue-shopping">Continuer mes achats</a>
-                </div>
+        <aside class="cart-summary">
+            <div class="summary-box">
+                <h3>Résumé</h3>
+                <div class="summary-line"><span>Total</span> <span id="cart-total-price">0 CFA</span></div>
+                <a href="checkout.html" class="btn-checkout">Procéder au paiement</a>
+            </div>
+        </aside>
+    </div>
+</main>
             </aside>
         </div>
     </main>
@@ -72,6 +54,40 @@
     <footer>
         <p>&copy; 2026 KEYMA - La pureté du geste.</p>
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+    const emptyMsg = document.getElementById('empty-cart-msg');
+    const cartContent = document.getElementById('cart-content');
+
+    if (cart.length === 0) {
+        // Si le panier est vide
+        emptyMsg.style.display = 'block';
+        cartContent.style.display = 'none';
+    } else {
+        // Si le panier contient des articles
+        emptyMsg.style.display = 'none';
+        cartContent.style.display = 'grid';
+        renderCartItems(cart);
+    }
+});
+
+function renderCartItems(cart) {
+    const list = document.getElementById('items-list');
+    list.innerHTML = ''; // On nettoie avant d'afficher
+    
+    cart.forEach(item => {
+        list.innerHTML += `
+            <div class="cart-item">
+                <div class="item-info">
+                    <h3>${item.name}</h3>
+                    <p class="item-price">${item.price} CFA</p>
+                </div>
+            </div>
+        `;
+    });
+}
+</script>
 
 </body>
 </html>
