@@ -635,3 +635,43 @@ body {
 .btn-confirm-order:hover {
     background: var(--or);
 }
+.success-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    padding: 0 5%;
+}
+
+.success-content {
+    max-width: 600px;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.check-icon {
+    font-size: 3rem;
+    color: var(--or-pale);
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.success-text {
+    font-family: var(--font-titre);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.success-details {
+    color: var(--gris-doux);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.success-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
