@@ -856,5 +856,5 @@ body {
 }
 .auth-links-extra {
     margin: 10px 0 20px 0; /* Un peu d'espace en haut et en bas */
-    text-align: left; /* Aligné à gauche comme les inputs */
+    text-align: right; /* Aligné à gauche comme les inputs */
 }
