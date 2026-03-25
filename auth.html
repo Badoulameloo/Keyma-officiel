@@ -22,39 +22,47 @@
                 </ul>
             </div>
             <div class="nav-center"><a href="index.html" class="logo-gold">KEYMA</a></div>
-            <div class="nav-right"><a href="cart.html" class="cart-link">PANIER (0)</a></div>
+            <div class="nav-right"><a href="cart.html" class="cart-link">PANIER (<span id="cart-count">0</span>)</a></div>
         </nav>
     </header>
 
     <main class="auth-page">
         <section class="auth-container-v2">
-            <h1 class="auth-title-gold">Mon Univers</h1>
-            <p class="auth-subtitle-clean">Identifiez-vous pour une expérience personnalisée</p>
+            <h1 id="auth-title" class="auth-title-gold">Connexion</h1>
+            <p id="auth-subtitle" class="auth-subtitle-clean">Entrez dans l'univers KEYMA</p>
 
-            <form class="auth-form-minimal">
+            <form id="login-form" class="auth-form-minimal" onsubmit="handleAuth(event, 'login')">
                 <div class="field">
-                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="email" id="login-email" placeholder="Email" required>
                 </div>
                 <div class="field">
-                    <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                    <input type="password" id="login-pass" placeholder="Mot de passe" required>
                 </div>
-                
                 <button type="submit" class="btn-auth-submit">Se Connecter</button>
-                
                 <div class="auth-links-extra">
-                    <a href="#" class="secondary-link">Mot de passe oublié ?</a>
+                    <a href="#" class="secondary-link" onclick="toggleAuth(event, 'signup')">Pas de compte ? Créer un compte</a>
+                </div>
+            </form>
+
+            <form id="signup-form" class="auth-form-minimal" style="display: none;" onsubmit="handleAuth(event, 'signup')">
+                <div class="field">
+                    <input type="text" id="signup-name" placeholder="Nom complet" required>
+                </div>
+                <div class="field">
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                </div>
+                <div class="field">
+                    <input type="password" id="signup-pass" placeholder="Créer un mot de passe" required>
+                </div>
+                <button type="submit" class="btn-auth-submit">Rejoindre KEYMA</button>
+                <div class="auth-links-extra">
+                    <a href="#" class="secondary-link" onclick="toggleAuth(event, 'login')">Déjà inscrite ? Se connecter</a>
                 </div>
             </form>
 
             <div class="auth-divider-horizontal"></div>
-
-            <div class="auth-footer-options">
-                <p>Pas encore de compte ?</p>
-                <a href="#" class="btn-outline-minimal">Créer un compte</a>
-                
-                <div class="guest-option">
+            <div class="guest-option">
                 <a href="javascript:history.back()" class="guest-link">Continuer en tant qu'invitée</a>
-                </div>
             </div>
         </section>
     </main>
@@ -63,5 +71,38 @@
         <p>&copy; 2026 KEYMA - L'élégance à chaque instant.</p>
     </footer>
 
+    <script>
+        // Fonction pour basculer entre Connexion et Inscription
+function toggleAuth(event, mode) {
+    event.preventDefault();
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const title = document.getElementById('auth-title');
+    const subtitle = document.getElementById('auth-subtitle');
+
+    if (mode === 'signup') {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+        title.innerText = 'Inscription';
+        subtitle.innerText = 'Créez votre compte personnel';
+    } else {
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+        title.innerText = 'Connexion';
+        subtitle.innerText = 'Entrez dans l\'univers KEYMA';
+    }
+}
+
+// Fonction pour gérer la redirection après validation
+function handleAuth(event, mode) {
+    event.preventDefault(); // Empêche le rechargement de la page
+    
+    // Ici on simule une validation réussie
+    alert(mode === 'login' ? "Connexion réussie !" : "Compte créé avec succès !");
+    
+    // REDIRECTION VERS L'ACCUEIL
+    window.location.href = 'index.html';
+}
+    </script>
 </body>
 </html>
