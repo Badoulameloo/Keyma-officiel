@@ -105,6 +105,40 @@ body {
 /* Affichage du menu quand la checkbox est cochée */
 #menu-toggle:checked ~ .menu {
     left: 0;
+    /* --- ANIMATION DE LA CROIX --- */
+
+/* On fixe la position de l'icône pour qu'elle reste visible au-dessus du menu ouvert */
+.hamburger {
+    position: relative;
+    z-index: 1001;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 14px; /* Hauteur totale ajustée pour 2 barres */
+    width: 25px;
+}
+
+.hamburger span {
+    background: #000;
+    height: 1.5px; /* Toujours très fin */
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+}
+
+/* On n'utilise que 2 barres pour une croix plus propre */
+/* La première barre tourne de 45 degrés */
+#menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+/* La deuxième barre tourne de -45 degrés */
+#menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* OPTIONNEL : Si tu avais 3 barres, on cache celle du milieu */
+/* #menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; } */
 }
 /* --- HERO SECTION --- */
 .hero {
