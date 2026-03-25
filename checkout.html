@@ -1,0 +1,23 @@
+<form action="https://formspree.io/f/ton_id_unique" method="POST" id="order-form" class="checkout-form">
+    
+    <div class="form-section">
+        <p class="section-subtitle">Détails de la commande KEYMA</p>
+        
+        <input type="text" name="Nom_Client" placeholder="Nom complet" required>
+        <input type="email" name="Email_Client" placeholder="Votre Email" required>
+        <input type="text" name="Adresse" placeholder="Adresse de livraison" required>
+        <input type="tel" name="Telephone" placeholder="Numéro de téléphone" required>
+        
+        <input type="hidden" name="_subject" value="Nouvelle commande KEYMA !">
+    </div>
+
+    <div class="order-summary">
+        <p class="section-subtitle">Récapitulatif</p>
+        <textarea name="Produits_Commandes" style="display:none;">Panier temporaire</textarea>
+        
+        <div class="summary-line"><span>Total estimé</span> <span>-- CFA</span></div>
+        
+        <button type="submit" class="btn-gold">Confirmer et Envoyer</button>
+        <p class="guest-notice">Les créatrices de KEYMA recevront votre commande par mail.</p>
+    </div>
+</form>
