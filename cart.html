@@ -22,7 +22,9 @@
                 </ul>
             </div>
             <div class="nav-center"><a href="index.html" class="logo-gold">KEYMA</a></div>
-            <div class="nav-right"><a href="cart.html" class="cart-link">PANIER (1)</a></div>
+            <div class="nav-right">
+    <a href="cart.html" class="cart-link">PANIER (<span id="cart-count">0</span>)</a>
+</div>
         </nav>
     </header>
 
@@ -54,7 +56,26 @@
     <footer>
         <p>&copy; 2026 KEYMA - La pureté du geste.</p>
     </footer>
+
     <script>
+
+        function updateCartCount() {
+    // On récupère le panier dans le stockage du navigateur
+    const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+    
+    // On calcule le nombre total d'articles
+    const totalItems = cart.length;
+    
+    // On cible la balise span qu'on a créée
+    const countElement = document.getElementById('cart-count');
+    
+    if (countElement) {
+        countElement.innerText = totalItems;
+    }
+}
+
+// On lance la fonction dès que la page est chargée
+document.addEventListener('DOMContentLoaded', updateCartCount);
     document.addEventListener('DOMContentLoaded', function() {
     const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
     const emptyMsg = document.getElementById('empty-cart-msg');
