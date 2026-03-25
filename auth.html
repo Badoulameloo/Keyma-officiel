@@ -1,36 +1,67 @@
-<main class="auth-container">
-    <div class="auth-wrapper">
-        
-        <section class="auth-box">
-            <h2 class="auth-title">Se Connecter</h2>
-            <p class="auth-subtitle">Déjà cliente KEYMA ?</p>
-            <form action="#" class="auth-form">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Mot de passe" required>
-                <button type="submit" class="btn-black">Connexion</button>
-                <a href="#" class="forgot-pass">Mot de passe oublié ?</a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Univers | KEYMA</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-left">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger"><span></span><span></span></label>
+                <ul class="menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="shop.html">Boutique</a></li>
+                    <li><a href="auth.html">Mon Compte</a></li>
+                </ul>
+            </div>
+            <div class="nav-center"><a href="index.html" class="logo-gold">KEYMA</a></div>
+            <div class="nav-right"><a href="cart.html" class="cart-link">PANIER (0)</a></div>
+        </nav>
+    </header>
+
+    <main class="auth-page">
+        <section class="auth-container-v2">
+            <h1 class="auth-title-gold">Mon Univers</h1>
+            <p class="auth-subtitle-clean">Identifiez-vous pour une expérience personnalisée</p>
+
+            <form class="auth-form-minimal">
+                <div class="field">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="field">
+                    <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                </div>
+                
+                <button type="submit" class="btn-auth-submit">Se Connecter</button>
+                
+                <div class="auth-links-extra">
+                    <a href="#" class="secondary-link">Mot de passe oublié ?</a>
+                </div>
             </form>
+
+            <div class="auth-divider-horizontal"></div>
+
+            <div class="auth-footer-options">
+                <p>Pas encore de compte ?</p>
+                <a href="#" class="btn-outline-minimal">Créer un compte</a>
+                
+                <div class="guest-option">
+                    <a href="shop.html" class="guest-link">Continuer en tant qu'invitée</a>
+                </div>
+            </div>
         </section>
+    </main>
 
-        <div class="auth-divider"></div>
+    <footer>
+        <p>&copy; 2026 KEYMA - L'élégance à chaque instant.</p>
+    </footer>
 
-        <section class="auth-box">
-            <h2 class="auth-title">S'inscrire</h2>
-            <p class="auth-subtitle">Rejoignez l'univers KEYMA</p>
-            <p class="auth-info">Créez un compte pour suivre vos commandes et profiter d'une expérience personnalisée.</p>
-            <form action="#" class="auth-form">
-                <input type="text" name="firstname" placeholder="Prénom" required>
-                <input type="text" name="lastname" placeholder="Nom" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Mot de passe" required>
-                <button type="submit" class="btn-gold-outline">Créer mon compte</button>
-            </form>
-        </section>
-
-    </div>
-    
-    <div class="guest-action">
-        <p>Vous souhaitez commander sans compte ?</p>
-        <a href="shop.html" class="link-underline">Continuer vers la boutique</a>
-    </div>
-</main>
+</body>
+</html>
