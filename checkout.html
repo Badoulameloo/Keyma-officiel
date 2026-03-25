@@ -1,23 +1,69 @@
 <form action="https://formspree.io/f/meepjzql" method="POST" id="order-form" class="checkout-form">
     
-    <div class="form-section">
-        <p class="section-subtitle">Détails de la commande KEYMA</p>
+    <main class="checkout-refined">
+    <section class="checkout-header">
+        <h1 class="gold-title-small">Finalisation</h1>
+        <p class="step-indicator">Livraison & Paiement</p>
+    </section>
         
-        <input type="text" name="Nom_Client" placeholder="Nom complet" required>
-        <input type="email" name="Email_Client" placeholder="Votre Email" required>
-        <input type="text" name="Adresse" placeholder="Adresse de livraison" required>
-        <input type="tel" name="Telephone" placeholder="Numéro de téléphone" required>
-        
-        <input type="hidden" name="_subject" value="Nouvelle commande KEYMA !">
-    </div>
+        <div class="checkout-form-section">
+            <div class="info-block">
+                <h2 class="section-label">Vos Coordonnées</h2>
+                <div class="input-minimal-group">
+                    <input type="text" name="Nom" placeholder="Nom complet" required>
+                    <input type="tel" name="Telephone" placeholder="Numéro de téléphone (Wave/OM)" required>
+                    <input type="text" name="Adresse" placeholder="Adresse de livraison (Quartier, Rue...)" required>
+                    <input type="text" name="Ville" placeholder="Ville" value="Dakar" required>
+                </div>
+            </div>
 
-    <div class="order-summary">
-        <p class="section-subtitle">Récapitulatif</p>
-        <textarea name="Produits_Commandes" style="display:none;">Panier temporaire</textarea>
-        
-        <div class="summary-line"><span>Total estimé</span> <span>-- CFA</span></div>
-        
-        <button type="submit" class="btn-gold">Confirmer et Envoyer</button>
-        <p class="guest-notice">Les créatrices de KEYMA recevront votre commande par mail.</p>
-    </div>
-</form>
+            <div class="info-block">
+                <h2 class="section-label">Mode de Règlement</h2>
+                <p class="payment-instruction">Sélectionnez votre moyen de paiement préféré :</p>
+                
+                <div class="payment-methods">
+                    <label class="method-card">
+                        <input type="radio" name="Paiement" value="Wave" checked>
+                        <span class="method-design">
+                            <span class="method-name">Wave</span>
+                            <span class="method-dot"></span>
+                        </span>
+                    </label>
+
+                    <label class="method-card">
+                        <input type="radio" name="Paiement" value="Orange Money">
+                        <span class="method-design">
+                            <span class="method-name">Orange Money</span>
+                            <span class="method-dot"></span>
+                        </span>
+                    </label>
+
+                    <label class="method-card">
+                        <input type="radio" name="Paiement" value="Especes">
+                        <span class="method-design">
+                            <span class="method-name">Espèces à la livraison</span>
+                            <span class="method-dot"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <aside class="checkout-summary-fixed">
+            <div class="summary-card-light">
+                <h3>Votre Commande</h3>
+                <div class="summary-line">
+                    <span>1x Voile Jersey Premium</span>
+                    <span>15.000 CFA</span>
+                </div>
+                <div class="summary-line total-line">
+                    <span>Total</span>
+                    <span>15.000 CFA</span>
+                </div>
+                <button type="submit" class="btn-confirm-order">Confirmer la commande</button>
+                <p class="privacy-note">Vos données sont traitées avec soin par l'équipe KEYMA.</p>
+            </div>
+        </aside>
+
+    </form>
+</main>

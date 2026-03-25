@@ -578,3 +578,126 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* --- REFINEMENT CHECKOUT --- */
+.checkout-refined {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 5%;
+}
+
+.gold-title-small {
+    font-family: var(--font-titre);
+    color: var(--or-pale);
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.step-indicator {
+    text-align: center;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gris-doux);
+    margin-bottom: 4rem;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 6rem;
+    align-items: start;
+}
+
+.section-label {
+    font-family: var(--font-titre);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+
+/* Inputs encore plus fins */
+.input-minimal-group input {
+    width: 100%;
+    padding: 1.2rem 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+    font-family: var(--font-corps);
+    outline: none;
+    background: transparent;
+}
+
+/* CHOIX DU PAIEMENT STYLISÉ */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.method-card {
+    cursor: pointer;
+    display: block;
+}
+
+.method-card input {
+    display: none; /* On cache le bouton radio par défaut */
+}
+
+.method-design {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.method-name {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.method-dot {
+    height: 10px;
+    width: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+/* Quand on sélectionne une option */
+.method-card input:checked + .method-design {
+    border-color: var(--or-pale);
+    background-color: #fffaf0; /* Un très léger fond crème */
+}
+
+.method-card input:checked + .method-design .method-dot {
+    background-color: var(--or-pale);
+    border-color: var(--or-pale);
+}
+
+/* Bouton Final */
+.btn-confirm-order {
+    width: 100%;
+    padding: 1.5rem;
+    background: #000;
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.btn-confirm-order:hover {
+    background: var(--or-pale);
+}
+
+@media (max-width: 900px) {
+    .checkout-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
