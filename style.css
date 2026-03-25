@@ -313,109 +313,101 @@ body {
     margin-top: 1rem;
     text-align: center;
 }
-/* --- PAGE AUTHENTIFICATION --- */
-.auth-container {
-    max-width: 1100px;
-    margin: 5rem auto;
-    padding: 0 5%;
+/* --- HARMONISATION AUTHENTIFICATION --- */
+.auth-minimal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Pour bien centrer verticalement */
+    padding: 4rem 5%;
+    background-color: var(--blanc-pur);
+}
+
+.auth-section {
+    width: 100%;
+    max-width: 450px; /* On reste sur quelque chose de très fin */
     text-align: center;
 }
 
-.auth-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    margin-bottom: 4rem;
-}
-
-.auth-box {
-    flex: 1;
-    max-width: 400px;
-    text-align: left;
-}
-
-.auth-title {
-    font-family: var(--font-titre);
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-}
-
-.auth-subtitle {
-    color: var(--or-pale);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 2rem;
-}
-
-.auth-info {
+.auth-intro {
+    font-family: var(--font-corps);
     font-size: 0.9rem;
     color: var(--gris-doux);
+    letter-spacing: 1px;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
+
+/* Formulaire très aéré */
+.auth-form-clean .input-group {
     margin-bottom: 1.5rem;
 }
 
-.auth-form input {
+.auth-form-clean input {
     width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #eee;
-    background: var(--blanc-casse);
+    padding: 1.2rem 0; /* On enlève les bordures sauf celle du bas pour plus d'élégance */
+    border: none;
+    border-bottom: 1px solid #eee;
+    background: transparent;
     font-family: var(--font-corps);
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-.btn-black {
+.auth-form-clean input:focus {
+    border-bottom: 1px solid var(--or-pale);
+}
+
+/* Bouton principal (Noir, comme sur l'index) */
+.btn-main-dark {
     width: 100%;
-    padding: 1rem;
+    padding: 1.2rem;
     background: #000;
     color: #fff;
     border: none;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-gold-outline {
-    width: 100%;
-    padding: 1rem;
-    background: transparent;
-    color: var(--or-pale);
-    border: 1px solid var(--or-pale);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-gold-outline:hover {
-    background: var(--or-pale);
-    color: #fff;
-}
-
-.forgot-pass {
-    display: block;
-    margin-top: 1rem;
+    letter-spacing: 3px;
     font-size: 0.8rem;
-    color: var(--gris-doux);
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn-main-dark:hover {
+    background: var(--or-pale);
+}
+
+/* Footer de la page Auth */
+.divider-line {
+    height: 1px;
+    background: #eee;
+    margin: 4rem auto 2rem;
+    width: 50px;
+}
+
+.btn-outline-gold {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--or-pale);
     text-decoration: none;
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
 }
 
-.guest-action {
-    border-top: 1px solid #eee;
-    padding-top: 2rem;
+.btn-outline-gold:hover {
+    border-bottom: 1px solid var(--or-pale);
 }
 
-.link-underline {
-    color: #000;
-    text-decoration: underline;
-    font-weight: 600;
+.guest-shortcut {
+    margin-top: 3rem;
 }
 
-/* Responsive pour mobile */
-@media (max-width: 768px) {
-    .auth-wrapper {
-        flex-direction: column;
-        align-items: center;
-        gap: 3rem;
-    }
+.guest-shortcut a {
+    color: var(--gris-doux);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
 }
