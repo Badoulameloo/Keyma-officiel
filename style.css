@@ -193,3 +193,74 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+/* --- PAGE À PROPOS --- */
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-family: var(--font-titre);
+    font-size: 2.5rem;
+    color: var(--or-pale);
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.intro-text {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--noir-leger);
+    margin-bottom: 4rem;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    text-align: left;
+    margin-bottom: 6rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--gris-doux);
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    filter: grayscale(20%); /* Effet un peu vintage/doux */
+    border: 1px solid #f0f0f0;
+}
+
+/* Grille des matières */
+.materials-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    font-family: var(--font-titre);
+    font-size: 1.2rem;
+    color: var(--or-pale);
+}
+
+.future-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: var(--gris-doux);
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
