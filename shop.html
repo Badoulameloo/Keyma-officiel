@@ -41,10 +41,12 @@
                     <span class="product-badge">Arrivée imminente</span>
                 </div>
                 <div class="product-info">
-                    <h3>Voile en Jersey</h3>
-                    <p class="price">15.000 CFA</p>
-                    <button class="btn-add-disabled" disabled>Bientôt disponible</button>
-                </div>
+    <h3>Voile en Jersey</h3>
+    <p class="price">15000</p> <div class="product-actions">
+        <button class="btn-add-cart" onclick="addToCart('Voile Jersey', 15000)">Ajouter au panier</button>
+        <button class="btn-buy-now" onclick="buyNow('Voile Jersey', 15000)">Acheter maintenant</button>
+    </div>
+</div>
             </article>
 
             <article class="product-card">
@@ -52,10 +54,12 @@
                     <div class="img-placeholder">Soie de Jazz</div>
                 </div>
                 <div class="product-info">
-                    <h3>Voile Jazz Classique</h3>
-                    <p class="price">12.500 CFA</p>
-                    <button class="btn-add-disabled" disabled>Bientôt disponible</button>
-                </div>
+    <h3>Voile en Jersey</h3>
+    <p class="price">15000</p> <div class="product-actions">
+        <button class="btn-add-cart" onclick="addToCart('Voile Jersey', 15000)">Ajouter au panier</button>
+        <button class="btn-buy-now" onclick="buyNow('Voile Jersey', 15000)">Acheter maintenant</button>
+    </div>
+</div>
             </article>
 
             <article class="product-card">
@@ -63,10 +67,39 @@
                     <div class="img-placeholder">Modal Douceur</div>
                 </div>
                 <div class="product-info">
-                    <h3>Voile en Modal</h3>
-                    <p class="price">18.000 CFA</p>
-                    <button class="btn-add-disabled" disabled>Bientôt disponible</button>
-                </div>
+    <h3>Voile en Jersey</h3>
+    <p class="price">15000</p> <div class="product-actions">
+        <button class="btn-add-cart" onclick="addToCart('Voile Jersey', 15000)">Ajouter au panier</button>
+        <button class="btn-buy-now" onclick="buyNow('Voile Jersey', 15000)">Acheter maintenant</button>
+    </div>
+</div>
+<script>
+    // Fonction pour ajouter au panier sans quitter la page
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+    cart.push({ name: name, price: price });
+    localStorage.setItem('keyma_cart', JSON.stringify(cart));
+    
+    // On met à jour le petit (0) dans le header
+    updateCartCount();
+    
+    alert(name + " a été ajouté à votre sélection.");
+}
+// Fonction pour acheter et aller directement au PAIEMENT
+function buyNow(name, price) {
+    // 1. On vide d'abord le panier existant si on veut un achat unique (optionnel)
+    // Ou on ajoute simplement au panier actuel :
+    let cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+    cart.push({ name: name, price: price });
+    localStorage.setItem('keyma_cart', JSON.stringify(cart));
+    
+    // 2. On met à jour le compteur par principe
+    updateCartCount();
+    
+    // 3. ON PROGULSE DIRECTEMENT VERS LE PAIEMENT
+    window.location.href = 'checkout.html';
+}
+</script>
             </article>
         </section>
     </main>
