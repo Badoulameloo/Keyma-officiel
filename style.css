@@ -313,53 +313,61 @@ body {
     margin-top: 1rem;
     text-align: center;
 }
-/* --- HARMONISATION AUTHENTIFICATION --- */
-.auth-minimal {
+/* --- NOUVEAU STYLE AUTHENTIFICATION --- */
+.auth-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh; /* Pour bien centrer verticalement */
-    padding: 4rem 5%;
-    background-color: var(--blanc-pur);
+    min-height: 85vh;
+    padding: 2rem;
 }
 
-.auth-section {
+.auth-container-v2 {
     width: 100%;
-    max-width: 450px; /* On reste sur quelque chose de très fin */
+    max-width: 400px;
     text-align: center;
+    animation: fadeIn 1s ease-in;
 }
 
-.auth-intro {
-    font-family: var(--font-corps);
-    font-size: 0.9rem;
-    color: var(--gris-doux);
-    letter-spacing: 1px;
-    margin-bottom: 3rem;
+.auth-title-gold {
+    font-family: var(--font-titre);
+    color: var(--or-pale);
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 
-/* Formulaire très aéré */
-.auth-form-clean .input-group {
+.auth-subtitle-clean {
+    font-size: 0.8rem;
+    color: var(--gris-doux);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+}
+
+.auth-form-minimal .field {
     margin-bottom: 1.5rem;
 }
 
-.auth-form-clean input {
+.auth-form-minimal input {
     width: 100%;
-    padding: 1.2rem 0; /* On enlève les bordures sauf celle du bas pour plus d'élégance */
+    padding: 1rem 0;
     border: none;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #E0E0E0; /* Ligne très fine */
     background: transparent;
     font-family: var(--font-corps);
+    font-size: 0.9rem;
     outline: none;
-    transition: border-color 0.3s;
+    transition: 0.3s;
 }
 
-.auth-form-clean input:focus {
+.auth-form-minimal input:focus {
     border-bottom: 1px solid var(--or-pale);
 }
 
-/* Bouton principal (Noir, comme sur l'index) */
-.btn-main-dark {
+.btn-auth-submit {
     width: 100%;
     padding: 1.2rem;
     background: #000;
@@ -367,47 +375,64 @@ body {
     border: none;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-size: 0.8rem;
-    margin-top: 2rem;
+    font-size: 0.75rem;
+    margin-top: 1.5rem;
     cursor: pointer;
     transition: 0.4s;
 }
 
-.btn-main-dark:hover {
+.btn-auth-submit:hover {
     background: var(--or-pale);
 }
 
-/* Footer de la page Auth */
-.divider-line {
-    height: 1px;
-    background: #eee;
-    margin: 4rem auto 2rem;
-    width: 50px;
+.auth-links-extra {
+    margin-top: 1rem;
 }
 
-.btn-outline-gold {
-    display: inline-block;
-    margin-top: 1rem;
-    color: var(--or-pale);
+.secondary-link {
+    font-size: 0.75rem;
+    color: var(--gris-doux);
     text-decoration: none;
-    font-family: var(--font-titre);
-    font-size: 1.1rem;
-    border-bottom: 1px solid transparent;
     transition: 0.3s;
 }
 
-.btn-outline-gold:hover {
-    border-bottom: 1px solid var(--or-pale);
+.secondary-link:hover {
+    color: #000;
 }
 
-.guest-shortcut {
-    margin-top: 3rem;
+.auth-divider-horizontal {
+    height: 1px;
+    background: #F0F0F0;
+    margin: 3.5rem auto 2.5rem;
+    width: 60px;
 }
 
-.guest-shortcut a {
+.btn-outline-minimal {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid #000;
+    color: #000;
+    text-decoration: none;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 1rem;
+    transition: 0.3s;
+}
+
+.btn-outline-minimal:hover {
+    background: #000;
+    color: #fff;
+}
+
+.guest-option {
+    margin-top: 2rem;
+}
+
+.guest-link {
+    font-size: 0.7rem;
     color: var(--gris-doux);
-    font-size: 0.75rem;
+    text-decoration: underline;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-decoration: none;
 }
