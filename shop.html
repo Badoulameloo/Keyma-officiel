@@ -1,42 +1,80 @@
-<main class="shop-page">
-    <header class="shop-header">
-        <h1 class="gold-title-small">La Collection</h1>
-        <p class="shop-intro">Des matières nobles, un tombé parfait.</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Collection | KEYMA</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-left">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger"><span></span><span></span></label>
+                <ul class="menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="shop.html">Boutique</a></li>
+                    <li><a href="auth.html">Mon Compte</a></li>
+                </ul>
+            </div>
+            <div class="nav-center"><a href="index.html" class="logo-gold">KEYMA</a></div>
+            <div class="nav-right">
+                <a href="cart.html" class="cart-link">PANIER (<span id="cart-count">0</span>)</a>
+            </div>
+        </nav>
     </header>
 
-    <section class="products-grid">
-        <article class="product-card">
-            <div class="product-img-wrapper">
-                <div class="img-placeholder">Jersey Premium</div>
-                <span class="product-badge">Arrivée imminente</span>
-            </div>
-            <div class="product-info">
-                <h3>Voile en Jersey</h3>
-                <p class="price">15.000 CFA</p>
-                <button class="btn-add-disabled" disabled>Bientôt disponible</button>
-            </div>
-        </article>
+    <main class="shop-page">
+        <header class="shop-header">
+            <h1 class="gold-title-small">La Collection</h1>
+            <p class="shop-intro">Des matières nobles, un tombé parfait.</p>
+        </header>
 
-        <article class="product-card">
-            <div class="product-img-wrapper">
-                <div class="img-placeholder">Soie de Jazz</div>
-            </div>
-            <div class="product-info">
-                <h3>Voile Jazz Classique</h3>
-                <p class="price">12.500 CFA</p>
-                <button class="btn-add-disabled" disabled>Bientôt disponible</button>
-            </div>
-        </article>
+        <section class="products-grid">
+            <article class="product-card">
+                <div class="product-img-wrapper">
+                    <div class="img-placeholder">Jersey Premium</div>
+                    <span class="product-badge">Arrivée imminente</span>
+                </div>
+                <div class="product-info">
+                    <h3>Voile en Jersey</h3>
+                    <p class="price">15.000 CFA</p>
+                    <button class="btn-add-disabled" disabled>Bientôt disponible</button>
+                </div>
+            </article>
 
-        <article class="product-card">
-            <div class="product-img-wrapper">
-                <div class="img-placeholder">Modal Douceur</div>
-            </div>
-            <div class="product-info">
-                <h3>Voile en Modal</h3>
-                <p class="price">18.000 CFA</p>
-                <button class="btn-add-disabled" disabled>Bientôt disponible</button>
-            </div>
-        </article>
-    </section>
-</main>
+            <article class="product-card">
+                <div class="product-img-wrapper">
+                    <div class="img-placeholder">Soie de Jazz</div>
+                </div>
+                <div class="product-info">
+                    <h3>Voile Jazz Classique</h3>
+                    <p class="price">12.500 CFA</p>
+                    <button class="btn-add-disabled" disabled>Bientôt disponible</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-img-wrapper">
+                    <div class="img-placeholder">Modal Douceur</div>
+                </div>
+                <div class="product-info">
+                    <h3>Voile en Modal</h3>
+                    <p class="price">18.000 CFA</p>
+                    <button class="btn-add-disabled" disabled>Bientôt disponible</button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 KEYMA - L'élégance à chaque instant.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
