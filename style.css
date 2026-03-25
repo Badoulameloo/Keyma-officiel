@@ -871,3 +871,45 @@ body {
     margin: 10px 0 20px 0; /* Un peu d'espace en haut et en bas */
     text-align: right; /* Aligné à gauche comme les inputs */
 }
+.profile-page {
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-container {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.profile-card {
+    background: var(--blanc-casse);
+    padding: 40px;
+    margin-top: 30px;
+    text-align: left;
+    border: 1px solid #eee;
+}
+
+.info-group {
+    margin-bottom: 20px;
+}
+
+.info-group label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--or-pale);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info-group p {
+    font-size: 1rem;
+    color: var(--noir);
+}
+
+.profile-card hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+}

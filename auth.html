@@ -96,22 +96,55 @@ function toggleAuth(event, mode) {
     }
 }
 
-// Fonction pour gérer la redirection après validation
+// Fonction pour gérer la connexion (dans auth.html)
 function handleAuth(event, mode) {
-    event.preventDefault(); // Empêche le rechargement de la page
+    event.preventDefault();
     
-    // Ici on simule une validation réussie
-    alert(mode === 'login' ? "Connexion réussie !" : "Compte créé avec succès !");
+    // On simule une connexion réussie en stockant un indicateur
+    localStorage.setItem('isLoggedIn', 'true');
+    // On stocke aussi des infos bidons pour la page profil
+    localStorage.setItem('userName', 'Alioune Badara'); 
+    localStorage.setItem('userEmail', 'alioune@iam.sn');
     
-    // REDIRECTION VERS L'ACCUEIL
     window.location.href = 'index.html';
 }
-function forgotPassword() {
-    const email = prompt("Veuillez entrer votre adresse email pour recevoir un lien de réinitialisation :");
-    if (email) {
-        alert("Un email de récupération a été envoyé à : " + email);
+
+// Fonction pour gérer la déconnexion
+function handleLogout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    alert("Vous avez été déconnectée.");
+    window.location.href = 'index.html';
+}
+
+// Fonction pour mettre à jour l'affichage du menu (A appeler sur toutes les pages)
+function updateNavigation() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const dropdown = document.getElementById('user-dropdown');
+    
+    if (dropdown) {
+        if (isLoggedIn) {
+            // Si connecté : voir profil et déconnexion
+            dropdown.innerHTML = `
+                <a href="profile.html">Mon Profil</a>
+                <a href="#" onclick="handleLogout()">Se déconnecter</a>
+            `;
+        } else {
+            // Si déconnecté : lien vers la page de connexion
+            dropdown.innerHTML = `
+                <a href="auth.html">Se connecter</a>
+                <a href="auth.html">Créer un compte</a>
+            `;
+        }
     }
 }
+
+// On lance la mise à jour au chargement
+document.addEventListener('DOMContentLoaded', () => {
+    updateNavigation();
+    updateCartCount(); // Garde ton ancienne fonction pour le panier
+});
     </script>
 </body>
 </html>

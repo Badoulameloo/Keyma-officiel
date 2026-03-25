@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil | KEYMA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="profile-page">
+        <section class="profile-container">
+            <h1 class="gold-title-small">Mon Profil</h1>
+            
+            <div class="profile-card">
+                <div class="info-group">
+                    <label>Nom Complet</label>
+                    <p id="prof-name">Alioune Badara</p>
+                </div>
+                <div class="info-group">
+                    <label>Email</label>
+                    <p id="prof-email">alioune@iam.sn</p>
+                </div>
+                
+                <hr>
+                
+                <h3>Sécurité</h3>
+                <form onsubmit="alert('Mot de passe mis à jour !'); return false;">
+                    <div class="field">
+                        <input type="password" placeholder="Ancien mot de passe" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Nouveau mot de passe" required>
+                    </div>
+                    <button type="submit" class="btn-buy-now">Modifier le mot de passe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
