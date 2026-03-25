@@ -34,8 +34,21 @@
         </div>
 
         <div class="nav-right">
-            <a href="cart.html" class="cart-link">PANIER (0)</a>
+    <div class="user-menu-container">
+        <a href="#" class="user-icon" onclick="toggleUserMenu(event)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </a>
+        <div id="user-dropdown" class="user-dropdown">
+            <a href="profile.html">Mon Profil</a>
+            <a href="#" onclick="handleLogout()">Déconnexion</a>
         </div>
+    </div>
+    
+    <a href="cart.html" class="cart-link">PANIER (<span id="cart-count">0</span>)</a>
+</div>
     </nav>
 </header>
 
@@ -57,6 +70,46 @@
     <footer>
         <p>&copy; 2026 KEYMA - Tous droits réservés.</p>
     </footer>
+    <script>
+        // 1. Menu Profil (Toggle)
+function toggleUserMenu(event) {
+    event.preventDefault();
+    const dropdown = document.getElementById('user-dropdown');
+    if (dropdown) {
+        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+    }
+}
+
+// 2. Fermer le menu si on clique n'importe où ailleurs sur la page
+window.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('user-dropdown');
+    const userMenu = document.querySelector('.user-menu-container');
+    
+    // Si le menu est ouvert et qu'on clique en dehors de l'icône/menu
+    if (dropdown && !userMenu.contains(event.target)) {
+        dropdown.style.display = 'none';
+    }
+});
+
+// 3. Gestion de la déconnexion
+function handleLogout() {
+    localStorage.removeItem('isLoggedIn'); 
+    alert("Vous avez été déconnectée de l'univers KEYMA.");
+    window.location.href = 'index.html';
+}
+
+// 4. Mise à jour du compteur panier (pour qu'il soit juste sur toutes les pages)
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+    const countElement = document.getElementById('cart-count');
+    if (countElement) {
+        countElement.innerText = cart.length;
+    }
+}
+
+// Lancer au chargement de n'importe quelle page
+document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
 
 </body>
 </html>

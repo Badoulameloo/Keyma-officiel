@@ -38,6 +38,9 @@
                 <div class="field">
                     <input type="password" id="login-pass" placeholder="Mot de passe" required>
                 </div>
+                <div class="auth-links-extra">
+    <a href="#" class="secondary-link" onclick="forgotPassword()">Mot de passe oublié ?</a>
+</div>
                 <button type="submit" class="btn-auth-submit">Se Connecter</button>
                 <div class="auth-links-extra">
                     <a href="#" class="secondary-link" onclick="toggleAuth(event, 'signup')">Pas de compte ? Créer un compte</a>
@@ -102,6 +105,12 @@ function handleAuth(event, mode) {
     
     // REDIRECTION VERS L'ACCUEIL
     window.location.href = 'index.html';
+}
+function forgotPassword() {
+    const email = prompt("Veuillez entrer votre adresse email pour recevoir un lien de réinitialisation :");
+    if (email) {
+        alert("Un email de récupération a été envoyé à : " + email);
+    }
 }
     </script>
 </body>

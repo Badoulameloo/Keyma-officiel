@@ -810,3 +810,47 @@ body {
 @media (max-width: 600px) {
     .products-grid { grid-template-columns: 1fr; } /* 1 colonne sur mobile */
 }
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-menu-container {
+    position: relative;
+}
+
+.user-icon {
+    color: var(--noir);
+    display: flex;
+    align-items: center;
+}
+
+.user-dropdown {
+    display: none; /* Caché par défaut */
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: white;
+    border: 1px solid #eee;
+    min-width: 150px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    z-index: 1000;
+    text-align: left;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--noir);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.user-dropdown a:hover {
+    background: var(--blanc-casse);
+    color: var(--or-pale);
+}
