@@ -607,26 +607,29 @@ body {
 /* Grille de produits */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur PC */
-    gap: 3rem; /* Espace entre les produits */
+    /* Sur mobile : 1 colonne. Sur PC (écran > 1024px) : 3 ou 4 colonnes max */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 40px; /* Espace entre les produits */
+    padding: 40px 5%;
+    max-width: 1200px; /* Empêche les produits de s'étaler à l'infini sur les grands écrans */
+    margin: 0 auto; /* Centre toute la grille sur la page */
 }
 
 .product-card {
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Aligne le bas des cartes */
+    align-items: center; /* Centre le texte et les boutons */
+    text-align: center;
+    background: #fff;
+    padding: 15px;
+    transition: transform 0.3s ease;
 }
 
-/* Conteneur de l'image (format portrait) */
 .product-img-wrapper {
     width: 100%;
-    aspect-ratio: 3/4; /* Ratio d'image mode portrait */
-    background-color: var(--blanc-casse); /* Fond temporaire gris très clair */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 400px; /* Hauteur fixe pour que toutes les photos soient alignées */
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .img-placeholder {
@@ -644,9 +647,8 @@ body {
 }
 .product-img {
     width: 100%;
-    height: 350px; /* Ou la hauteur que tu préfères */
-    object-fit: cover; /* Pour que l'image ne soit pas déformée */
-    transition: transform 0.5s ease;
+    height: 100%;
+    object-fit: cover; /* Important : l'image remplit le cadre sans se déformer */
 }
 
 .product-card:hover .product-img {
@@ -658,42 +660,38 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* --- BOUTONS D'ACTION --- */
 .product-actions {
     display: flex;
-    flex-direction: column; /* Boutons l'un au-dessus de l'autre */
-    gap: 10px;
+    flex-direction: column;
+    gap: 10px; /* Espace entre les deux boutons */
+    width: 100%;
+    max-width: 200px; /* Limite la largeur des boutons sur PC */
+    margin-top: 15px;
 }
 
 /* Bouton Ajouter au Panier (Bordure dorée) */
+.btn-add-cart, .btn-buy-now {
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
 .btn-add-cart {
     background: transparent;
-    border: 1px solid var(--or-pale);
-    color: var(--or-pale);
-    padding: 0.8rem;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.3s;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
 }
 
-.btn-add-cart:hover {
-    background: var(--or-pale);
-    color: white;
-}
-
-/* Bouton Acheter Maintenant (Noir plein) */
+/* Bouton Acheter (Noir) */
 .btn-buy-now {
     background: #000;
-    color: #fff;
     border: 1px solid #000;
-    padding: 0.8rem;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.3s;
+    color: #fff;
 }
 
 .btn-buy-now:hover {
