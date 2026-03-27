@@ -40,48 +40,59 @@
 
         <section class="products-grid">
             
-            <article class="product-card">
-                <div class="product-img-wrapper">
-                    <div class="img-placeholder">Jersey Premium</div>
-                </div>
-                <div class="product-info">
-                    <h3>Voile en Jersey</h3>
-                    <p class="price">15000 CFA</p>
-                    <div class="product-actions">
-                        <button class="btn-add-cart" onclick="addToCart('Voile Jersey', 15000)">Ajouter au panier</button>
-                        <button class="btn-buy-now" onclick="buyNow('Voile Jersey', 15000)">Acheter maintenant</button>
-                    </div>
-                </div>
-            </article>
+            <section class="products-grid">
+    
+    <article class="product-card">
+        <div class="product-img-wrapper">
+            <img src="assets/img/jersey-premium.jpg" alt="Voile Jersey" class="product-img">
+        </div>
+        <div class="product-info">
+            <h3>Voile en Jersey</h3>
+            <p class="price">15000 CFA</p>
+            <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Voile Jersey', 15000, 'assets/img/jersey-premium.jpg')">Ajouter au panier</button>
+                <button class="btn-buy-now" onclick="buyNow('Voile Jersey', 15000, 'assets/img/jersey-premium.jpg')">Acheter maintenant</button>
+            </div>
+        </div>
+    </article>
 
-            <article class="product-card">
-                <div class="product-img-wrapper">
-                    <div class="img-placeholder">Soie de Jazz</div>
-                </div>
-                <div class="product-info">
-                    <h3>Voile Jazz Classique</h3>
-                    <p class="price">12500 CFA</p>
-                    <div class="product-actions">
-                        <button class="btn-add-cart" onclick="addToCart('Voile Jazz', 12500)">Ajouter au panier</button>
-                        <button class="btn-buy-now" onclick="buyNow('Voile Jazz', 12500)">Acheter maintenant</button>
-                    </div>
-                </div>
-            </article>
+    </section>
 
-            <article class="product-card">
-                <div class="product-img-wrapper">
-                    <div class="img-placeholder">Modal Douceur</div>
-                </div>
-                <div class="product-info">
-                    <h3>Voile en Modal</h3>
-                    <p class="price">18000 CFA</p>
-                    <div class="product-actions">
-                        <button class="btn-add-cart" onclick="addToCart('Voile Modal', 18000)">Ajouter au panier</button>
-                        <button class="btn-buy-now" onclick="buyNow('Voile Modal', 18000)">Acheter maintenant</button>
-                    </div>
-                </div>
-            </article>
+            <section class="products-grid">
+    
+    <article class="product-card">
+        <div class="product-img-wrapper">
+            <img src="assets/img/jersey-premium.jpg" alt="Voile Jersey" class="product-img">
+        </div>
+        <div class="product-info">
+            <h3>Voile en Jersey</h3>
+            <p class="price">15000 CFA</p>
+            <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Voile Jersey', 15000, 'assets/img/jersey-premium.jpg')">Ajouter au panier</button>
+                <button class="btn-buy-now" onclick="buyNow('Voile Jersey', 15000, 'assets/img/jersey-premium.jpg')">Acheter maintenant</button>
+            </div>
+        </div>
+    </article>
 
+    </section>
+
+            <section class="products-grid">
+    
+    <article class="product-card">
+        <div class="product-img-wrapper">
+            <img src="assets/img/jersey-premium.jpg" alt="Voile Jersey" class="product-img">
+        </div>
+        <div class="product-info">
+            <h3>Voile en Jersey</h3>
+            <p class="price">15000 CFA</p>
+            <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Voile Jersey', 15000, 'assets/img/jersey-premium.jpg')">Ajouter au panier</button>
+                <button class="btn-buy-now" onclick="buyNow('Voile Jersey', 15000, 'assets/img/jersey-premium.jpg')">Acheter maintenant</button>
+            </div>
+        </div>
+    </article>
+
+    </section>
         </section>
     </main>
 
@@ -90,69 +101,45 @@
     </footer>
 
     <script>
-        // Fonction pour mettre à jour le compteur (0)
+        // Mise à jour du badge PANIER (X)
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
     const countElement = document.getElementById('cart-count');
     if (countElement) {
-        countElement.innerText = cart.length;
+        // On calcule le total des quantités
+        const totalQty = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        countElement.innerText = totalQty;
     }
 }
 
-// Fonction pour ajouter au panier
-function addToCart(name, price) {
+// Ajouter au panier avec gestion des quantités et images
+function addToCart(name, price, image) {
     let cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
-    cart.push({ name: name, price: price });
-    localStorage.setItem('keyma_cart', JSON.stringify(cart));
-    updateCartCount(); // Mise à jour immédiate
-    alert(name + " a été ajouté à votre sélection.");
-}
-
-// Fonction pour acheter et aller directement au PAIEMENT
-function buyNow(name, price) {
-    addToCart(name, price); // On ajoute
-    window.location.href = 'checkout.html'; // On propulse
-}
-
-// Lancer la mise à jour au chargement de la page
-document.addEventListener('DOMContentLoaded', updateCartCount);
-// 1. Menu Profil (Toggle)
-function toggleUserMenu(event) {
-    event.preventDefault();
-    const dropdown = document.getElementById('user-dropdown');
-    if (dropdown) {
-        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
-    }
-}
-
-// 2. Fermer le menu si on clique n'importe où ailleurs sur la page
-window.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('user-dropdown');
-    const userMenu = document.querySelector('.user-menu-container');
     
-    // Si le menu est ouvert et qu'on clique en dehors de l'icône/menu
-    if (dropdown && !userMenu.contains(event.target)) {
-        dropdown.style.display = 'none';
-    }
-});
+    // On vérifie si le produit existe déjà
+    const existingProduct = cart.find(item => item.name === name);
 
-// 3. Gestion de la déconnexion
-function handleLogout() {
-    localStorage.removeItem('isLoggedIn'); 
-    alert("Vous avez été déconnectée de l'univers KEYMA.");
-    window.location.href = 'index.html';
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        cart.push({ 
+            name: name, 
+            price: price, 
+            image: image, 
+            quantity: 1 
+        });
+    }
+
+    localStorage.setItem('keyma_cart', JSON.stringify(cart));
+    updateCartCount();
+    alert(name + " a été ajouté à votre sélection ✨");
 }
 
-// 4. Mise à jour du compteur panier (pour qu'il soit juste sur toutes les pages)
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
-    const countElement = document.getElementById('cart-count');
-    if (countElement) {
-        countElement.innerText = cart.length;
-    }
+function buyNow(name, price, image) {
+    addToCart(name, price, image);
+    window.location.href = 'checkout.html';
 }
 
-// Lancer au chargement de n'importe quelle page
 document.addEventListener('DOMContentLoaded', updateCartCount);
     </script>
 </body>
