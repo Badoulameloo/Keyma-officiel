@@ -642,7 +642,16 @@ body {
     margin: 1.5rem 0 0.5rem;
     font-weight: 400;
 }
+.product-img {
+    width: 100%;
+    height: 350px; /* Ou la hauteur que tu préfères */
+    object-fit: cover; /* Pour que l'image ne soit pas déformée */
+    transition: transform 0.5s ease;
+}
 
+.product-card:hover .product-img {
+    transform: scale(1.05); /* Petit effet de zoom au survol */
+}
 .price {
     font-weight: 600;
     font-size: 0.9rem;
