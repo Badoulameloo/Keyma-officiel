@@ -789,3 +789,22 @@ body {
     border-top: 1px solid #ddd;
     margin: 30px 0;
 }
+.btn-outline-minimal {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #D4AF37; /* Couleur Or KEYMA */
+    color: #000;
+    text-decoration: none; /* Enlève le soulignement moche */
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-outline-minimal:hover {
+    background-color: #D4AF37;
+    color: #fff;
+    border-color: #D4AF37;
+}
