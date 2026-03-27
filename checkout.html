@@ -1,70 +1,140 @@
-<form action="https://formspree.io/f/meepjzql" method="POST" id="order-form" class="checkout-form">
-    
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalisation | KEYMA</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-center"><a href="index.html" class="logo-gold">KEYMA</a></div>
+        </nav>
+    </header>
+
     <main class="checkout-refined">
-    <section class="checkout-header">
-        <h1 class="gold-title-small">Finalisation</h1>
-        <p class="step-indicator">Livraison & Paiement</p>
-    </section>
-        
-        <div class="checkout-form-section">
-            <div class="info-block">
-                <h2 class="section-label">Vos Coordonnées</h2>
-                <div class="input-minimal-group">
-                    <input type="text" name="Nom" placeholder="Nom complet" required>
-                    <input type="tel" name="Telephone" placeholder="Numéro de téléphone (Wave/OM)" required>
-                    <input type="text" name="Adresse" placeholder="Adresse de livraison (Quartier, Rue...)" required>
-                    <input type="text" name="Ville" placeholder="Ville" value="Dakar" required>
+        <section class="checkout-header">
+            <h1 class="gold-title-small">Finalisation</h1>
+            <p class="step-indicator">Livraison & Paiement</p>
+        </section>
+
+        <form action="https://formspree.io/f/meepjzql" method="POST" id="order-form" class="checkout-form">
+            <input type="hidden" name="Detail_Commande" id="hidden-cart-details">
+            <input type="hidden" name="Total_A_Payer" id="hidden-total-price">
+
+            <div class="checkout-form-section">
+                <div class="info-block">
+                    <h2 class="section-label">Vos Coordonnées</h2>
+                    <div class="input-minimal-group">
+                        <input type="text" name="Nom" placeholder="Nom complet" required>
+                        <input type="tel" name="Telephone" placeholder="Numéro de téléphone (77/78/76/70...)" required>
+                        <input type="text" name="Adresse" placeholder="Adresse de livraison (Quartier, Rue...)" required>
+                        <input type="text" name="Ville" placeholder="Ville" value="Dakar" required>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <h2 class="section-label">Mode de Règlement</h2>
+                    <p class="payment-instruction">Sélectionnez votre moyen de paiement préféré :</p>
+                    
+                    <div class="payment-methods">
+                        <label class="method-card">
+                            <input type="radio" name="Paiement" value="Wave" checked>
+                            <span class="method-design">
+                                <span class="method-name">Wave</span>
+                                <span class="method-dot"></span>
+                            </span>
+                        </label>
+
+                        <label class="method-card">
+                            <input type="radio" name="Paiement" value="Orange Money">
+                            <span class="method-design">
+                                <span class="method-name">Orange Money</span>
+                                <span class="method-dot"></span>
+                            </span>
+                        </label>
+
+                        <label class="method-card">
+                            <input type="radio" name="Paiement" value="Especes">
+                            <span class="method-design">
+                                <span class="method-name">Espèces à la livraison</span>
+                                <span class="method-dot"></span>
+                            </span>
+                        </label>
+                    </div>
                 </div>
             </div>
-            <link rel="stylesheet" href="style.css">
 
-            <div class="info-block">
-                <h2 class="section-label">Mode de Règlement</h2>
-                <p class="payment-instruction">Sélectionnez votre moyen de paiement préféré :</p>
+            <aside class="checkout-summary-fixed">
+                <div class="summary-card-light" id="cart-summary-display">
+                    <h3>Votre Commande</h3>
+                    <div class="summary-line total-line">
+                        <span>Total</span>
+                        <span id="final-total">0 CFA</span>
+                    </div>
+                    <button type="submit" class="btn-confirm-order">Confirmer la commande</button>
+                    <p class="privacy-note">Vos données sont traitées avec soin par l'équipe KEYMA.</p>
+                </div>
+            </aside>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 KEYMA - La pureté du geste.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+            const summaryContainer = document.getElementById('cart-summary-display');
+            const totalDisplay = document.getElementById('final-total');
+            const hiddenDetails = document.getElementById('hidden-cart-details');
+            const hiddenTotal = document.getElementById('hidden-total-price');
+
+            if (cart.length === 0) {
+                alert("Votre panier est vide !");
+                window.location.href = 'shop.html';
+                return;
+            }
+
+            let totalArgent = 0;
+            let detailTexte = "";
+            let htmlContent = "<h3>Votre Commande</h3>";
+
+            cart.forEach(item => {
+                const qty = item.quantity || 1;
+                const price = parseInt(item.price);
+                const subtotal = price * qty;
+                totalArgent += subtotal;
                 
-                <div class="payment-methods">
-                    <label class="method-card">
-                        <input type="radio" name="Paiement" value="Wave" checked>
-                        <span class="method-design">
-                            <span class="method-name">Wave</span>
-                            <span class="method-dot"></span>
-                        </span>
-                    </label>
+                detailTexte += `${qty}x ${item.name} (${subtotal} CFA) | `;
+                
+                htmlContent += `
+                    <div class="summary-line">
+                        <span>${qty}x ${item.name}</span>
+                        <span>${subtotal.toLocaleString()} CFA</span>
+                    </div>
+                `;
+            });
 
-                    <label class="method-card">
-                        <input type="radio" name="Paiement" value="Orange Money">
-                        <span class="method-design">
-                            <span class="method-name">Orange Money</span>
-                            <span class="method-dot"></span>
-                        </span>
-                    </label>
+            // On injecte les lignes de produits avant la ligne du total
+            const totalLineHTML = `<div class="summary-line total-line"><span>Total</span><span>${totalArgent.toLocaleString()} CFA</span></div>`;
+            const buttonHTML = `<button type="submit" class="btn-confirm-order">Confirmer la commande</button><p class="privacy-note">Vos données sont traitées avec soin par l'équipe KEYMA.</p>`;
+            
+            summaryContainer.innerHTML = htmlContent + totalLineHTML + buttonHTML;
 
-                    <label class="method-card">
-                        <input type="radio" name="Paiement" value="Especes">
-                        <span class="method-design">
-                            <span class="method-name">Espèces à la livraison</span>
-                            <span class="method-dot"></span>
-                        </span>
-                    </label>
-                </div>
-            </div>
-        </div>
+            // Remplissage des champs pour Formspree
+            hiddenDetails.value = detailTexte;
+            hiddenTotal.value = totalArgent + " CFA";
+        });
 
-        <aside class="checkout-summary-fixed">
-            <div class="summary-card-light">
-                <h3>Votre Commande</h3>
-                <div class="summary-line">
-                    <span>1x Voile Jersey Premium</span>
-                    <span>15.000 CFA</span>
-                </div>
-                <div class="summary-line total-line">
-                    <span>Total</span>
-                    <span>15.000 CFA</span>
-                </div>
-                <button type="submit" class="btn-confirm-order">Confirmer la commande</button>
-                <p class="privacy-note">Vos données sont traitées avec soin par l'équipe KEYMA.</p>
-            </div>
-        </aside>
-
-    </form>
-</main>
+        // Vider le panier après validation
+        document.getElementById('order-form').addEventListener('submit', function() {
+            localStorage.removeItem('keyma_cart');
+        });
+    </script>
+</body>
+</html>

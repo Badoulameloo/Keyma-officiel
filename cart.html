@@ -73,93 +73,100 @@
 
     <script>
 
-        function updateCartCount() {
-    // On récupère le panier dans le stockage du navigateur
-    const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
-    
-    // On calcule le nombre total d'articles
-    const totalItems = cart.length;
-    
-    // On cible la balise span qu'on a créée
-    const countElement = document.getElementById('cart-count');
-    
-    if (countElement) {
-        countElement.innerText = totalItems;
-    }
-}
-
-// On lance la fonction dès que la page est chargée
-document.addEventListener('DOMContentLoaded', updateCartCount);
-    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Initialisation au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
     const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
     const emptyMsg = document.getElementById('empty-cart-msg');
     const cartContent = document.getElementById('cart-content');
 
     if (cart.length === 0) {
-        // Si le panier est vide
         emptyMsg.style.display = 'block';
         cartContent.style.display = 'none';
     } else {
-        // Si le panier contient des articles
         emptyMsg.style.display = 'none';
         cartContent.style.display = 'grid';
         renderCartItems(cart);
+        updateCartTotal(); // Calcule le total dès l'ouverture
     }
+    updateCartCount(); // Met à jour le badge (0)
 });
 
+// 2. Affichage des articles dans la liste
 function renderCartItems(cart) {
     const list = document.getElementById('items-list');
-    list.innerHTML = ''; // On nettoie avant d'afficher
+    list.innerHTML = ''; 
     
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
+        // On s'assure que la quantité existe, sinon on met 1
+        const qty = item.quantity || 1;
+        
         list.innerHTML += `
-            <div class="cart-item">
+            <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
                 <div class="item-info">
-                    <h3>${item.name}</h3>
-                    <p class="item-price">${item.price} CFA</p>
+                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 5px;">${item.name}</h3>
+                    <p class="item-price" style="color: #D4AF37;">${item.price.toLocaleString()} CFA x ${qty}</p>
+                </div>
+                <div class="item-actions">
+                    <button onclick="removeItem(${index})" style="background: none; border: none; color: #888; cursor: pointer; text-decoration: underline; font-size: 0.8rem;">Supprimer</button>
                 </div>
             </div>
         `;
     });
 }
-// 1. Menu Profil (Toggle)
-function toggleUserMenu(event) {
-    event.preventDefault();
-    const dropdown = document.getElementById('user-dropdown');
-    if (dropdown) {
-        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+
+// 3. Calcul et affichage du TOTAL
+function updateCartTotal() {
+    const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+    const totalElement = document.getElementById('cart-total-price');
+    
+    const total = cart.reduce((sum, item) => {
+        const qty = item.quantity || 1;
+        return sum + (item.price * qty);
+    }, 0);
+
+    if (totalElement) {
+        totalElement.innerText = total.toLocaleString() + " CFA";
     }
 }
 
-// 2. Fermer le menu si on clique n'importe où ailleurs sur la page
-window.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('user-dropdown');
-    const userMenu = document.querySelector('.user-menu-container');
+// 4. Supprimer un article
+function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+    cart.splice(index, 1); // Retire l'élément à cet index
+    localStorage.setItem('keyma_cart', JSON.stringify(cart));
     
-    // Si le menu est ouvert et qu'on clique en dehors de l'icône/menu
-    if (dropdown && !userMenu.contains(event.target)) {
-        dropdown.style.display = 'none';
+    // On recharge l'affichage sans rafraîchir la page
+    if (cart.length === 0) {
+        location.reload(); // Plus simple pour afficher le message "Panier vide"
+    } else {
+        renderCartItems(cart);
+        updateCartTotal();
+        updateCartCount();
     }
-});
+}
 
-// 3. Gestion de la déconnexion
+// 5. Mise à jour du petit badge "PANIER (X)"
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
+    const countElement = document.getElementById('cart-count');
+    if (countElement) {
+        const totalQty = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        countElement.innerText = totalQty;
+    }
+}
+
+// --- FONCTIONS MENU & AUTH ---
+function toggleUserMenu(event) {
+    event.preventDefault();
+    const dropdown = document.getElementById('user-dropdown');
+    dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+}
+
 function handleLogout() {
     localStorage.removeItem('isLoggedIn'); 
     alert("Vous avez été déconnectée de l'univers KEYMA.");
     window.location.href = 'index.html';
 }
-
-// 4. Mise à jour du compteur panier (pour qu'il soit juste sur toutes les pages)
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
-    const countElement = document.getElementById('cart-count');
-    if (countElement) {
-        countElement.innerText = cart.length;
-    }
-}
-
-// Lancer au chargement de n'importe quelle page
-document.addEventListener('DOMContentLoaded', updateCartCount);
 </script>
 
 </body>
