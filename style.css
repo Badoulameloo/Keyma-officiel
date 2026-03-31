@@ -851,3 +851,37 @@ body {
         margin-bottom: 2px !important;
     }
 }
+@media (max-width: 768px) {
+    /* 1. On cache les gros boutons pour épurer le design */
+    .product-actions {
+        display: none !important;
+    }
+
+    /* 2. On aligne tout à gauche */
+    .product-card {
+        text-align: left !important;
+        align-items: flex-start !important;
+        padding: 0 !important; /* On colle l'image aux bords */
+    }
+
+    /* 3. On ajuste la grille pour que les produits respirent */
+    .products-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px 10px !important; /* Plus d'espace vertical, moins horizontal */
+        padding: 10px !important;
+    }
+
+    /* 4. On fixe la hauteur des images pour qu'elles soient toutes alignées */
+    .product-img-wrapper {
+        height: 250px !important; /* Hauteur fixe pour l'harmonie */
+        width: 100% !important;
+        background-color: #f9f9f9; /* Fond gris clair si l'image charge mal */
+    }
+
+    .product-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+}
