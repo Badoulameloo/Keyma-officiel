@@ -885,3 +885,17 @@ body {
         object-fit: cover !important;
     }
 }
+@media (max-width: 768px) {
+    .product-actions {
+        display: flex !important; /* On les réaffiche */
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn-add-cart, .btn-buy-now {
+        padding: 8px !important; /* Plus petit pour le mobile */
+        font-size: 0.7rem !important;
+    }
+}
