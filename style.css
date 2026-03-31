@@ -815,3 +815,42 @@ body {
     color: #fff;
     border-color: #D4AF37;
 }
+/* --- AFFICHAGE GRILLE MOBILE (STYLE HIJABCURVY) --- */
+@media (max-width: 768px) {
+    /* On force 2 colonnes avec un petit espace de 10px */
+    .products-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 15px 10px !important; 
+        padding: 10px !important;
+    }
+
+    /* On aligne le texte à gauche pour coller à l'image */
+    .product-card {
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    /* On ajuste la taille des textes pour que ça rentre sur 2 colonnes */
+    .product-info h3 {
+        font-size: 0.85rem !important;
+        margin: 5px 0 !important;
+        line-height: 1.2;
+    }
+
+    .product-info .price {
+        font-size: 0.9rem !important;
+        font-weight: bold !important;
+    }
+
+    /* On cache les gros boutons sur mobile pour épurer comme sur sa capture */
+    .product-actions {
+        display: none !important; 
+    }
+
+    /* Optionnel : On rend l'image plus haute (format portrait) */
+    .product-img-wrapper {
+        height: 220px !important; /* Ajuste selon tes photos */
+        margin-bottom: 5px !important;
+    }
+}
