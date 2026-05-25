@@ -19,9 +19,11 @@
 
 body {
     font-family: var(--font-corps);
-    background-color: var(--blanc-pur);
+    background-color: #fff;
     color: var(--noir-leger);
-    line-height: 1.6;
+    overflow-x: hidden;
+    /* AJOUTE CETTE LIGNE : Permet une glissade fluide de toute la page */
+    transition: transform 0.3s ease-in-out; 
 }
 
 /* ==========================================================================
@@ -773,4 +775,18 @@ body {
     .product-actions {
         max-width: 100% !important;
     }
+}
+/* ==========================================================================
+   EFFET COULISSANT : DÉCALAGE DE LA PAGE À L'OUVERTURE DU MENU
+   ========================================================================== */
+
+/* Quand le menu est ouvert, on pousse tout le body vers la droite */
+#menu-toggle:checked ~ body, 
+body:has(#menu-toggle:checked) {
+    transform: translateX(250px);
+}
+
+/* Optionnel : Si ton menu hamburger doit rester fixe à sa place d'origine pendant le décalage */
+#menu-toggle:checked ~ .navbar .hamburger {
+    /* Tu peux laisser ainsi pour qu'il suive le mouvement, ou ajuster si besoin */
 }
