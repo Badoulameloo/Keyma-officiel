@@ -1,48 +1,48 @@
 /* ==========================================================================
-   VARIABLES ET CONFIGURATION GÉNÉRALE
+   VARIABLES, RESET & BASES
    ========================================================================== */
 :root {
-    --or-pale: #d4af37;
-    --noir-leger: #1a1a1a;
-    --gris-doux: #707070;
-    --blanc-casse: #fcfbf9;
+    --blanc-pur: #FFFFFF;
+    --blanc-casse: #F9F7F2; /* Un ton sable très léger */
+    --gris-doux: #757575;
+    --or-pale: #D4AF37; /* Pour de petites touches d'élégance */
+    --noir-leger: #2C2C2C;
     --font-titre: 'Playfair Display', serif;
     --font-corps: 'Montserrat', sans-serif;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: var(--font-corps);
-    background-color: #fff;
+    background-color: var(--blanc-pur);
     color: var(--noir-leger);
-    overflow-x: hidden;
+    line-height: 1.6;
 }
 
 /* ==========================================================================
-   1. NAVIGATION & EN-TÊTE (FIX ABSOLU POUR LE MENU HAMBURGER)
+   NAVIGATION (NAVBAR)
    ========================================================================== */
-header {
-    position: relative;
-    z-index: 1000; /* Reste strictement au-dessus du Hero et de l'image de fond */
-    background: #fff;
-}
-
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
-    height: 80px;
+    padding: 1.5rem 5%;
+    background-color: #fff;
+    position: relative;
 }
 
-.nav-left, .nav-center, .nav-right {
-    display: flex;
-    align-items: center;
+.nav-left {
+    flex: 1;
+}
+
+.nav-center {
+    flex: 1;
+    text-align: center;
 }
 
 .logo-gold {
@@ -50,141 +50,199 @@ header {
     font-size: 1.8rem;
     color: var(--or-pale);
     text-decoration: none;
-    letter-spacing: 4px;
-    font-weight: 400;
-}
-
-.cart-link {
-    text-decoration: none;
-    color: var(--noir-leger);
-    font-size: 0.8rem;
-    letter-spacing: 2px;
+    letter-spacing: 6px;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
-/* Menu Burger et visibilité */
-#menu-toggle {
-    display: none;
+.nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
 }
 
+.cart-link {
+    color: #000000;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+/* --- MENU BURGER --- */
+#menu-toggle { display: none; }
+
 .hamburger {
-    position: relative;
-    z-index: 1001; /* Doit être au-dessus du fond */
     cursor: pointer;
-    display: block;
-    width: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 25px;
+    position: relative;
+    z-index: 1001;
+    justify-content: space-between;
     height: 14px;
 }
 
 .hamburger span {
-    display: block;
+    background: #000;
+    height: 1.5px;
     width: 100%;
-    height: 2px;
-    background-color: #000;
-    position: absolute;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease-in-out;
 }
 
-.hamburger span:first-child {
-    top: 0;
-}
-
-.hamburger span:last-child {
-    bottom: 0;
-}
-
-/* Menu déroulant mobile */
 .menu {
     position: fixed;
-    top: 80px;
+    top: 0;
     left: -100%;
     width: 250px;
-    height: calc(100vh - 80px);
-    background: #fff;
+    height: 100vh;
+    background: var(--blanc-pur);
+    display: flex;
     flex-direction: column;
-    padding: 40px 20px;
-    gap: 20px;
+    padding: 100px 40px;
     list-style: none;
-    z-index: 999;
-    transition: left 0.3s ease;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    transition: 0.5s;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.05);
 }
 
-.menu li a {
+.menu li { margin: 1.5rem 0; }
+
+.menu a {
     text-decoration: none;
-    color: var(--noir-leger);
-    font-size: 1rem;
+    color: #000;
     text-transform: uppercase;
+    font-size: 0.9rem;
     letter-spacing: 2px;
 }
 
+/* États quand le menu est ouvert */
 #menu-toggle:checked ~ .menu {
     left: 0;
 }
 
+#menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
 
-/* ==========================================================================
-   2. SECTION HERO - PAGE D'ACCUEIL (AVEC IMAGE DE FOND COUVRANTE)
-   ========================================================================== */
-.hero {
-    height: 75vh; /* Hauteur pour laisser le footer respirer sur PC */
+#menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* --- MENU UTILISATEUR DROPDOWN --- */
+.user-menu-container {
+    position: relative;
+}
+
+.user-icon {
+    color: var(--noir-leger);
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: white;
+    border: 1px solid #eee;
+    min-width: 150px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    z-index: 1000;
+    text-align: left;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--noir-leger);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.user-dropdown a:hover {
+    background: var(--blanc-casse);
+    color: var(--or-pale);
+}
+
+/* ==========================================================================
+   SECTION HERO - ACCUEIL
+   ========================================================================== */
+.hero {
+    height: 85vh; /* Prend 85% de la hauteur de l'écran */
+    display: flex;
+    align-items: center; /* Centre verticalement le contenu */
+    justify-content: center; /* Centre horizontalement le contenu */
     text-align: center;
+    padding: 0 20px;
     position: relative;
-    /* Image gérée en CSS Cover avec un filtre pour garder le texte parfaitement lisible */
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
-                url('asset/img/modal-finition-dentelle.jpg.jpg.jpeg') no-repeat center center/cover !important;
+    overflow: hidden;
 }
 
 .hero-content {
-    max-width: 800px;
-    padding: 0 20px;
-    z-index: 2;
+    max-width: 800px; /* Aligne proprement le texte pour éviter les lignes trop longues */
+    z-index: 2; /* S'assure que le texte reste bien au-dessus du fond */
+    animation: fadeIn 1.2s ease-out; /* Petit effet d'apparition élégant au chargement */
 }
 
 .hero-content h1 {
     font-family: var(--font-titre);
-    font-size: 3.5rem;
+    font-size: 3.8rem; /* Grand titre luxueux pour PC */
     font-weight: 400;
     color: var(--noir-leger);
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    letter-spacing: 1px;
 }
 
 .hero-content p {
-    font-size: 0.9rem;
-    color: var(--noir-leger);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-}
-
-/* Le bouton "Explorer la collection" de type GHOST (Cadre parfait) */
-.btn-primary {
-    display: inline-block;
-    padding: 15px 40px;
-    background-color: #fff; /* Fond blanc opaque élégant */
-    color: #000;
-    text-transform: uppercase;
     font-family: var(--font-corps);
-    font-size: 0.8rem;
+    font-size: 1.1rem;
+    color: var(--gris-doux);
+    margin-bottom: 3rem;
     letter-spacing: 2px;
-    text-decoration: none;
-    border: 1px solid #000; /* Fine bordure noire */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06); /* Ombre légère subtile */
-    transition: all 0.3s ease;
+    text-transform: uppercase; /* Donne un style éditorial très haut de gamme */
 }
 
-.btn-primary:hover {
-    background-color: #000;
-    color: #fff;
+/* --- EFFET D'APPARITION --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-
 
 /* ==========================================================================
-   3. SECTION BOUTIQUE & GRILLE PRODUITS (CORRIGÉE SANS EFFET ESCALIER)
+   RESPONSIVE HERO (ADAPTATION MOBILE)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 75vh; /* Un peu plus court sur mobile pour voir le reste */
+    }
+    
+    .hero-content h1 {
+        font-size: 2.4rem; /* Réduction du titre pour que ça ne coupe pas mal */
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 2.5rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* ==========================================================================
+   SECTION BOUTIQUE (CORRIGÉE)
    ========================================================================== */
 .shop-page {
     max-width: 1200px;
@@ -197,13 +255,6 @@ header {
     margin-bottom: 5rem;
 }
 
-.gold-title-small {
-    font-family: var(--font-titre);
-    font-size: 2.5rem;
-    font-weight: 400;
-    color: var(--noir-leger);
-}
-
 .shop-intro {
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -212,17 +263,16 @@ header {
     margin-top: 1rem;
 }
 
-/* Grille de produits stricte à 3 colonnes sur PC */
+/* On cible plusieurs variantes de noms pour être sûr de bloquer la grille sur PC */
 .products-grid, .products, .shop-page .products {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Fixe STRICTEMENT 3 colonnes */
     gap: 40px !important; 
     padding: 40px 0 !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
 }
 
-/* Cartes produits corrigées */
 .product-card {
     display: flex !important;
     flex-direction: column !important;
@@ -231,12 +281,12 @@ header {
     background: #fff !important;
     padding: 15px !important;
     width: 100% !important;
-    height: auto !important;
+    height: auto !important; /* Supprime l'effet d'escalier */
 }
 
 .product-img-wrapper {
     width: 100% !important;
-    height: 400px !important; /* Hauteur harmonisée */
+    height: 400px !important; /* Hauteur fixe et propre pour PC */
     overflow: hidden !important;
     margin-bottom: 20px !important;
     background-color: var(--blanc-casse);
@@ -266,19 +316,18 @@ header {
     flex-direction: column !important;
     gap: 10px !important;
     width: 100% !important;
-    max-width: 220px !important;
-    margin-top: auto !important;
+    max-width: 200px !important;
+    margin-top: auto !important; /* Pousse les boutons tout en bas de la carte */
 }
 
 .btn-add-cart, .btn-buy-now {
     width: 100% !important;
     padding: 12px !important;
     cursor: pointer;
-    font-family: var(--font-corps);
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.8rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: all 0.2s ease;
 }
 
 .btn-add-cart {
@@ -287,138 +336,440 @@ header {
     color: var(--or-pale);
 }
 
-.btn-add-cart:hover {
-    background: var(--or-pale);
-    color: #fff;
-}
-
 .btn-buy-now {
     background: #000;
     border: 1px solid #000;
     color: #fff;
 }
 
-.btn-buy-now:hover {
-    background: #333;
-    border-color: #333;
-}
-
-
 /* ==========================================================================
-   4. FEATURES & FOOTER (ALIGNEMENT MODÈLE BAS DE PAGE)
+   PAGE À PROPOS (ABOUT)
    ========================================================================== */
-main {
-    display: flex;
-    flex-direction: column;
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 6rem 5%;
+    text-align: center;
 }
 
-.features {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 20px 5%;
-    background: #fff;
-    text-transform: uppercase;
-    font-family: var(--font-corps);
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    color: #000;
-}
-
-.feature-item {
+.about-hero h1 {
+    font-family: var(--font-titre);
+    font-size: 2.5rem;
+    color: var(--or-pale);
+    margin-bottom: 2rem;
     font-weight: 400;
 }
 
-footer {
-    background: #fff;
-    padding: 25px 5%;
-    text-align: center;
-    border-top: 1px solid #f5f5f5;
+.intro-text {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--noir-leger);
+    margin-bottom: 4rem;
 }
 
-footer p {
-    font-family: var(--font-corps);
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    text-align: left;
+    margin-bottom: 6rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--gris-doux);
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    filter: grayscale(20%);
+    border: 1px solid #f0f0f0;
+}
+
+.materials-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    font-family: var(--font-titre);
+    font-size: 1.2rem;
+    color: var(--or-pale);
+}
+
+.future-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: var(--gris-doux);
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+}
+
+/* ==========================================================================
+   PAGE PANIER (CART)
+   ========================================================================== */
+.cart-page {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 5%;
+}
+
+.cart-title {
+    font-family: var(--font-titre);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-weight: 400;
+}
+
+.cart-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 4rem;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 120px 1fr 80px;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.item-img img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: var(--blanc-casse);
+}
+
+.item-info h3 {
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.item-color {
     font-size: 0.8rem;
-    color: #000;
+    color: var(--gris-doux);
+    margin-bottom: 1rem;
+}
+
+.item-price {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-size: 0.7rem;
+    color: var(--gris-doux);
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 0;
+}
+
+.item-qty input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.summary-box {
+    background-color: var(--blanc-casse);
+    padding: 2rem;
+    position: sticky;
+    top: 120px;
+}
+
+.summary-box h3 {
+    font-family: var(--font-titre);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 1rem;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #E0E0E0;
+}
+
+.btn-checkout {
+    display: block;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+    transition: 0.3s;
+}
+
+.btn-checkout:hover {
+    background: var(--or-pale);
+}
+
+.continue-shopping {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
+    color: var(--gris-doux);
+    text-decoration: none;
+    text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   PAGE DE PAIEMENT (CHECKOUT)
+   ========================================================================== */
+.checkout-refined {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.gold-title-small {
+    font-family: var(--font-titre);
+    color: var(--or-pale);
+    text-align: center;
+    font-size: 2.5rem;
+    letter-spacing: 5px;
     text-transform: uppercase;
 }
 
-
-/* ==========================================================================
-   5. RESPONSIVE SÉCURISÉ (MOBILE & TABLETTE)
-   ========================================================================== */
-
-/* Ajustements pour Écrans PC / Tablettes (min-width: 768px) */
-@media screen and (min-width: 768px) {
-    main {
-        position: relative;
-    }
-    
-    /* Place les blocks Features en bas à gauche de manière absolue */
-    .features {
-        position: absolute;
-        bottom: -50px; 
-        left: 5%;
-        padding: 0;
-        background: transparent;
-        z-index: 10;
-    }
-    
-    footer {
-        padding: 35px 5%;
-        margin-top: 50px;
-    }
+.checkout-grid {
+    display: flex;
+    gap: 80px;
+    margin-top: 50px;
 }
 
-/* Écrans Moyens / Tablettes (max-width: 992px) */
+.checkout-form-section { flex: 2; }
+.checkout-summary-fixed { flex: 1; }
+
+.input-minimal-group input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-minimal-group input:focus {
+    border-bottom: 1px solid var(--or-pale);
+}
+
+/* Méthodes de paiement (Wave, OM, Cash) */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.method-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.method-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+.method-design {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #eee;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.method-card input:checked + .method-design {
+    border-color: var(--or-pale);
+    background: #fffcf5;
+}
+
+.btn-confirm-order {
+    width: 100%;
+    background: var(--noir-leger);
+    color: white;
+    padding: 20px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-confirm-order:hover {
+    background: var(--or-pale);
+}
+
+/* ==========================================================================
+   COMPTE & SUCCÈS
+   ========================================================================== */
+.success-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    padding: 0 5%;
+}
+
+.success-content {
+    max-width: 600px;
+}
+
+.check-icon {
+    font-size: 3rem;
+    color: var(--or-pale);
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.success-text {
+    font-family: var(--font-titre);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.success-details {
+    color: var(--gris-doux);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.success-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.profile-page {
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-container {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.profile-card {
+    background: var(--blanc-casse);
+    padding: 40px;
+    margin-top: 30px;
+    text-align: left;
+    border: 1px solid #eee;
+}
+
+.info-group {
+    margin-bottom: 20px;
+}
+
+.info-group label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--or-pale);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info-group p {
+    font-size: 1rem;
+    color: var(--noir-leger);
+}
+
+.profile-card hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+}
+
+.btn-outline-minimal {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--or-pale);
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-outline-minimal:hover {
+    background-color: var(--or-pale);
+    color: #fff;
+}
+
+.auth-links-extra {
+    margin: 10px 0 20px 0;
+    text-align: right;
+}
+
+/* ==========================================================================
+   RESPONSIVE (PROPRE ET SÉPARÉ POUR ÉVITER LES BUGS)
+   ========================================================================== */
+
+/* Écrans intermédiaires / Tablettes */
 @media screen and (max-width: 992px) {
     .products-grid, .products, .shop-page .products {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 colonnes */
         gap: 25px !important;
     }
-    
     .product-img-wrapper {
         height: 320px !important;
     }
-    
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
 }
 
-/* Smartphones / Écrans Mobiles (max-width: 600px) */
+/* Smartphones */
 @media screen and (max-width: 600px) {
-    .navbar {
-        padding: 10px 5%;
-    }
-    
-    .hero {
-        height: 65vh;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        font-size: 0.8rem;
-    }
-    
-    .btn-primary {
-        padding: 12px 30px;
-        font-size: 0.75rem;
-    }
-
     .products-grid, .products, .shop-page .products {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 2fr !important; /* 1 seule colonne */
         gap: 35px !important;
     }
-    
     .product-img-wrapper {
-        height: 350px !important;
+        height: 360px !important;
     }
-    
     .product-actions {
         max-width: 100% !important;
     }
