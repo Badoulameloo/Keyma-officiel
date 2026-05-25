@@ -171,58 +171,74 @@ body {
 }
 
 /* ==========================================================================
-   HERO & FEATURES SECTIONS
+   SECTION HERO - ACCUEIL
    ========================================================================== */
 .hero {
-    height: 80vh;
-    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), 
-                url('assets/hero-voile.jpg') no-repeat center center/cover;
+    height: 85vh; /* Prend 85% de la hauteur de l'écran */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Centre verticalement le contenu */
+    justify-content: center; /* Centre horizontalement le contenu */
     text-align: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px; /* Aligne proprement le texte pour éviter les lignes trop longues */
+    z-index: 2; /* S'assure que le texte reste bien au-dessus du fond */
+    animation: fadeIn 1.2s ease-out; /* Petit effet d'apparition élégant au chargement */
 }
 
 .hero-content h1 {
     font-family: var(--font-titre);
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: 3.8rem; /* Grand titre luxueux pour PC */
     font-weight: 400;
+    color: var(--noir-leger);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
 }
 
 .hero-content p {
+    font-family: var(--font-corps);
     font-size: 1.1rem;
-    margin-bottom: 2rem;
     color: var(--gris-doux);
-    letter-spacing: 1px;
-}
-
-.btn-primary {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    border: 1px solid var(--noir-leger);
-    text-decoration: none;
-    color: var(--noir-leger);
-    text-transform: uppercase;
-    font-size: 0.75rem;
+    margin-bottom: 3rem;
     letter-spacing: 2px;
-    transition: all 0.4s;
+    text-transform: uppercase; /* Donne un style éditorial très haut de gamme */
 }
 
-.btn-primary:hover {
-    background-color: var(--noir-leger);
-    color: var(--blanc-pur);
+/* --- EFFET D'APPARITION --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.features {
-    display: flex;
-    justify-content: space-around;
-    padding: 4rem 5%;
-    background-color: var(--blanc-casse);
-    text-align: center;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+/* ==========================================================================
+   RESPONSIVE HERO (ADAPTATION MOBILE)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 75vh; /* Un peu plus court sur mobile pour voir le reste */
+    }
+    
+    .hero-content h1 {
+        font-size: 2.4rem; /* Réduction du titre pour que ça ne coupe pas mal */
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 2.5rem;
+        letter-spacing: 1px;
+    }
 }
 
 /* ==========================================================================
