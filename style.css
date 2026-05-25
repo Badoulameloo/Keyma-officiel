@@ -748,7 +748,7 @@ body {
 /* Smartphones */
 @media screen and (max-width: 600px) {
     .products-grid, .products, .shop-page .products {
-        grid-template-columns: 1fr !important; /* 1 seule colonne */
+        grid-template-columns: 2fr !important; /* 1 seule colonne */
         gap: 35px !important;
     }
     .product-img-wrapper {
