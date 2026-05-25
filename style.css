@@ -226,7 +226,7 @@ body {
 }
 
 /* ==========================================================================
-   SECTION BOUTIQUE (SHOP GRILLE DE 3)
+   SECTION BOUTIQUE (CORRIGÉE)
    ========================================================================== */
 .shop-page {
     max-width: 1200px;
@@ -247,57 +247,45 @@ body {
     margin-top: 1rem;
 }
 
-/* La Grille principale - Strictement 3 colonnes proportionnelles */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 40px; 
-    padding: 40px 0;
-    max-width: 1200px;
-    margin: 0 auto;
+/* On cible plusieurs variantes de noms pour être sûr de bloquer la grille sur PC */
+.products-grid, .products, .shop-page .products {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Fixe STRICTEMENT 3 colonnes */
+    gap: 40px !important; 
+    padding: 40px 0 !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
 }
 
 .product-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background: #fff;
-    padding: 15px;
-    width: 100%;
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-img {
-    transform: scale(1.05); /* Effet zoom fluide au survol */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    background: #fff !important;
+    padding: 15px !important;
+    width: 100% !important;
+    height: auto !important; /* Supprime l'effet d'escalier */
 }
 
 .product-img-wrapper {
-    width: 100%;
-    height: 400px; /* Aligne parfaitement toutes les fiches produits */
-    overflow: hidden;
-    margin-bottom: 20px;
+    width: 100% !important;
+    height: 400px !important; /* Hauteur fixe et propre pour PC */
+    overflow: hidden !important;
+    margin-bottom: 20px !important;
     background-color: var(--blanc-casse);
 }
 
 .product-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Recadre sans étirer ni déformer */
-    transition: transform 0.3s ease;
-}
-
-.img-placeholder {
-    color: #ccc;
-    font-family: var(--font-titre);
-    font-style: italic;
-    font-size: 1.2rem;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
 }
 
 .product-info h3 {
     font-family: var(--font-titre);
     font-size: 1.1rem;
-    margin: 1.5rem 0 0.5rem;
+    margin: 1rem 0 0.5rem;
     font-weight: 400;
 }
 
@@ -308,24 +296,22 @@ body {
 }
 
 .product-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    max-width: 200px;
-    margin-top: 15px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 200px !important;
+    margin-top: auto !important; /* Pousse les boutons tout en bas de la carte */
 }
 
-/* Boutons élégants de la boutique */
 .btn-add-cart, .btn-buy-now {
-    width: 100%;
-    padding: 12px;
+    width: 100% !important;
+    padding: 12px !important;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.8rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: 0.3s;
 }
 
 .btn-add-cart {
@@ -334,19 +320,10 @@ body {
     color: var(--or-pale);
 }
 
-.btn-add-cart:hover {
-    background: var(--or-pale);
-    color: #fff;
-}
-
 .btn-buy-now {
     background: #000;
     border: 1px solid #000;
     color: #fff;
-}
-
-.btn-buy-now:hover {
-    background: #333;
 }
 
 /* ==========================================================================
@@ -754,55 +731,30 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (PROPRE ET NETTOYÉ)
+   RESPONSIVE (PROPRE ET SÉPARÉ POUR ÉVITER LES BUGS)
    ========================================================================== */
 
-/* Tablettes et écrans intermédiaires */
-@media (max-width: 992px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* On passe à 2 colonnes */
+/* Écrans intermédiaires / Tablettes */
+@media screen and (max-width: 992px) {
+    .products-grid, .products, .shop-page .products {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 colonnes */
         gap: 25px !important;
     }
     .product-img-wrapper {
-        height: 320px !important; /* Hauteur ajustée pour garder les proportions */
-    }
-    .cart-container {
-        grid-template-columns: 1fr; /* Le résumé du panier passe en dessous */
-        gap: 2rem;
+        height: 320px !important;
     }
 }
 
-/* Smartphones et petits écrans */
-@media (max-width: 600px) {
-    .products-grid {
-        grid-template-columns: 1fr !important; /* 1 seul produit par ligne */
+/* Smartphones */
+@media screen and (max-width: 600px) {
+    .products-grid, .products, .shop-page .products {
+        grid-template-columns: 1fr !important; /* 1 seule colonne */
         gap: 35px !important;
-        padding: 20px 0 !important;
-    }
-    .product-card {
-        text-align: center !important;
-        align-items: center !important;
-        padding: 10px !important;
     }
     .product-img-wrapper {
-        height: 360px !important; /* Belle taille d'image verticale pour mobile */
+        height: 360px !important;
     }
     .product-actions {
-        display: flex !important; /* On s'assure que les boutons restent visibles */
-        flex-direction: column;
-        width: 100%;
-        max-width: 260px;
-        margin: 15px auto 0;
-    }
-    .btn-add-cart, .btn-buy-now {
-        padding: 10px !important;
-        font-size: 0.75rem !important;
-    }
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    .checkout-grid {
-        flex-direction: column;
-        gap: 40px;
+        max-width: 100% !important;
     }
 }
