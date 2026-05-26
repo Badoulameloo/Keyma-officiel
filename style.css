@@ -182,42 +182,46 @@ body {
 /* ==========================================================================
    SECTION HERO - ACCUEIL
    ========================================================================== */
+/* ==========================================================================
+   SECTION HERO - ACCUEIL (IMAGE NETTE SANS VOILE GRIS)
+   ========================================================================= */
 .hero {
-    height: 85vh; /* Prend 85% de la hauteur de l'écran */
+    height: 75vh; /* Hauteur parfaite pour laisser le footer respirer */
     display: flex;
-    align-items: center; /* Centre verticalement le contenu */
-    justify-content: center; /* Centre horizontalement le contenu */
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 0 20px;
     position: relative;
-    overflow: hidden;
+    
+    /* CORRECTION : L'image est maintenant 100% nette, sans dégradé ni voile par-dessus */
+    background: url('asset/img/votre-image-accueil.jpg') no-repeat center center/cover !important;
 }
 
 .hero-content {
-    max-width: 800px; /* Aligne proprement le texte pour éviter les lignes trop longues */
-    z-index: 2; /* S'assure que le texte reste bien au-dessus du fond */
-    animation: fadeIn 1.2s ease-out; /* Petit effet d'apparition élégant au chargement */
+    max-width: 800px;
+    padding: 0 20px;
+    z-index: 2;
 }
 
 .hero-content h1 {
     font-family: var(--font-titre);
-    font-size: 3.8rem; /* Grand titre luxueux pour PC */
+    font-size: 3.5rem;
     font-weight: 400;
-    color: var(--noir-leger);
+    color: #1a1a1a;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    letter-spacing: 1px;
+    /* ASTUCE LISIBILITÉ : Une légère lueur blanche invisible qui fait ressortir le texte noir */
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6); 
 }
 
 .hero-content p {
-    font-family: var(--font-corps);
-    font-size: 1.1rem;
-    color: var(--gris-doux);
-    margin-bottom: 3rem;
+    font-size: 0.9rem;
+    color: #1a1a1a;
     letter-spacing: 2px;
-    text-transform: uppercase; /* Donne un style éditorial très haut de gamme */
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.6);
 }
-
 /* --- EFFET D'APPARITION --- */
 @keyframes fadeIn {
     from {
