@@ -97,12 +97,12 @@ body {
 .menu {
     position: fixed;
     top: 0;
-    left: -300px; /* On le cache à -300px au lieu de -100% */
-    width: 280px;  /* LARGEUR FIXE : Il ne prendra QUE 280 pixels, parfait sur PC comme sur Mobile */
+    left: -300px; /* Caché par défaut à gauche */
+    width: 280px;  /* Largeur fixe parfaite sur PC */
     height: 100vh;
     background: #fff;
     flex-direction: column;
-    padding: 80px 30px 40px 30px; /* Plus d'espace en haut pour ne pas coller à la croix */
+    padding: 80px 30px 40px 30px;
     gap: 25px;
     list-style: none;
     z-index: 99999 !important;
@@ -823,4 +823,26 @@ body:has(#menu-toggle:checked) {
 #menu-toggle:checked ~ body, 
 body:has(#menu-toggle:checked) {
     transform: translateX(280px); /* Aligné pile sur la largeur du menu */
+}
+/* ==========================================================================
+   AJUSTEMENT RESPONSIVE MOBILE POUR LE MENU
+   ========================================================================== */
+@media screen and (max-width: 600px) {
+    .menu {
+        width: 70vw; /* Le menu ne prendra QUE 70% de la largeur du téléphone */
+        left: -75vw; /* On le cache un peu plus loin pour être sûr */
+        padding: 70px 20px 20px 20px; /* Légèrement plus compact */
+    }
+
+    /* Quand on coche sur mobile, le menu s'arrête à bord */
+    #menu-toggle:checked ~ .menu,
+    #menu-toggle:checked ~ .navbar .menu {
+        left: 0;
+    }
+
+    /* On décale le reste du site (la photo) exactement de la même valeur (70%) */
+    #menu-toggle:checked ~ body, 
+    body:has(#menu-toggle:checked) {
+        transform: translateX(70vw); 
+    }
 }
