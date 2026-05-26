@@ -5,7 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finalisation | KEYMA</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Styles pour les blocs d'avertissement et de paiement */
+        .delivery-notice-box {
+            background-color: #fcfbf9;
+            border-left: 3px solid #d4af37;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .delivery-notice-box p {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #1a1a1a;
+            margin: 0 0 8px 0;
+        }
+        .delivery-notice-box p:last-child {
+            margin-bottom: 0;
+        }
+        .payment-info-box {
+            background-color: #fcfbf9;
+            border: 1px dashed #1a1a1a;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+        .payment-info-box p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #1a1a1a;
+            margin: 0;
+        }
+        .payment-info-box strong {
+            font-weight: 600;
+            color: #000;
+        }
+        .select-minimal {
+            width: 100%;
+            padding: 15px 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            cursor: pointer;
+        }
+        .text-delivery {
+            color: #707070;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -32,15 +86,30 @@
                     <div class="input-minimal-group">
                         <input type="text" name="Nom" placeholder="Nom complet" required>
                         <input type="tel" name="Telephone" placeholder="Numéro de téléphone (77/78/76/70...)" required>
-                        <input type="text" name="Adresse" placeholder="Adresse de livraison (Quartier, Rue...)" required>
-                        <input type="text" name="Ville" placeholder="Ville" value="Dakar" required>
+                        
+                        <select name="Zone_Livraison" id="zone-livraison" class="select-minimal" required>
+                            <option value="" disabled selected>Choisir votre zone de livraison</option>
+                            <option value="Standard" data-prix="2000">Livraison Standard (Dakar Ville) - 2 000 CFA</option>
+                            <option value="Banlieue" data-prix="3000">Livraison Banlieue (Proche/Moyenne) - À partir de 3 000 CFA</option>
+                            <option value="Regions-Hors-Sénégal" data-prix="0">Régions & Hors Sénégal - (Nous contacter)</option>
+                        </select>
+                        
+                        <div class="delivery-notice-box">
+                            <p><strong>📍 Infos Livraison Standard (2 000 CFA) :</strong> Plateau, Médina, Fass, Colobane, Gueule Tapée, Fann, Point E, Amitié, Sacré-Cœur, Mermoz, Ouakam, Ngor, Almadies, Yoff, Hann, Grand Dakar, Liberté 1 à 6, SICAP, Parcelles Assainies, Patte d’Oie, HLM, Nord Foire, Cité Mixta…</p>
+                            <p><strong>🚗 Infos Livraison Banlieue (3 000 - 5 000 CFA) :</strong> Dalifort, Pikine, Guédiawaye, Thiaroye, Keur Massar, Zac Mbao, Yeumbeul, Malika, Mbao, Rufisque…</p>
+                            <p>⚠️ <em>Pour les livraisons en banlieue, lors de votre achat, communiquez votre emplacement exact et on vous donnera le tarif exact. Merci pour votre compréhension !</em></p>
+                            <p>ℹ️ <em><strong>PS :</strong> Pour les régions et ceux qui sont hors du Sénégal, veuillez nous contacter pour avoir plus d’informations, merci.</em></p>
+                        </div>
+
+                        <input type="text" name="Adresse_Precise" placeholder="Votre quartier et emplacement exact (ex: Patte d'Oie, Rue 3...)" required>
+                        <input type="text" name="Ville" placeholder="Ville ou Région" value="Dakar" required>
                     </div>
                 </div>
 
                 <div class="info-block">
                     <h2 class="section-label">Mode de Règlement</h2>
                     <p class="payment-instruction">Sélectionnez votre moyen de paiement préféré :</p>
-                    
+                     
                     <div class="payment-methods">
                         <label class="method-card">
                             <input type="radio" name="Paiement" value="Wave" checked>
@@ -57,7 +126,14 @@
                                 <span class="method-dot"></span>
                             </span>
                         </label>
+                    </div>
 
+                    <div class="payment-info-box">
+                        <p>
+                            ✨ <strong>Comment effectuer votre règlement ?</strong><br>
+                            Vous pouvez effectuer le transfert sur ce numéro : <strong>+221 77 408 22 25</strong>.<br>
+                            Puis envoyez-nous la capture sur WhatsApp sur le même numéro, merci.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -84,9 +160,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             const cart = JSON.parse(localStorage.getItem('keyma_cart')) || [];
             const summaryContainer = document.getElementById('cart-summary-display');
-            const totalDisplay = document.getElementById('final-total');
             const hiddenDetails = document.getElementById('hidden-cart-details');
             const hiddenTotal = document.getElementById('hidden-total-price');
+            const zoneSelect = document.getElementById('zone-livraison');
 
             if (cart.length === 0) {
                 alert("Votre panier est vide !");
@@ -94,19 +170,20 @@
                 return;
             }
 
-            let totalArgent = 0;
+            let sousTotalProduits = 0;
             let detailTexte = "";
-            let htmlContent = "<h3>Votre Commande</h3>";
+            let htmlArticles = "";
 
+            // Construction de la liste des produits du panier
             cart.forEach(item => {
                 const qty = item.quantity || 1;
                 const price = parseInt(item.price);
                 const subtotal = price * qty;
-                totalArgent += subtotal;
+                sousTotalProduits += subtotal;
                 
                 detailTexte += `${qty}x ${item.name} (${subtotal} CFA) | `;
                 
-                htmlContent += `
+                htmlArticles += `
                     <div class="summary-line">
                         <span>${qty}x ${item.name}</span>
                         <span>${subtotal.toLocaleString()} CFA</span>
@@ -114,18 +191,64 @@
                 `;
             });
 
-            // On injecte les lignes de produits avant la ligne du total
-            const totalLineHTML = `<div class="summary-line total-line"><span>Total</span><span>${totalArgent.toLocaleString()} CFA</span></div>`;
-            const buttonHTML = `<button type="submit" class="btn-confirm-order">Confirmer la commande</button><p class="privacy-note">Vos données sont traitées avec soin par l'équipe KEYMA.</p>`;
-            
-            summaryContainer.innerHTML = htmlContent + totalLineHTML + buttonHTML;
+            // Fonction pour mettre à jour le prix total avec la livraison choisie
+            function majAffichageCommande() {
+                const optionSelectionnee = zoneSelect.options[zoneSelect.selectedIndex];
+                const prixLivraison = optionSelectionnee && optionSelectionnee.dataset.prix ? parseInt(optionSelectionnee.dataset.prix) : 0;
+                const totalGeneral = sousTotalProduits + prixLivraison;
 
-            // Remplissage des champs pour Formspree
-            hiddenDetails.value = detailTexte;
-            hiddenTotal.value = totalArgent + " CFA";
+                let htmlContent = "<h3>Votre Commande</h3>" + htmlArticles;
+
+                // Affichage des frais si applicables
+                if (prixLivraison > 0) {
+                    htmlContent += `
+                        <div class="summary-line text-delivery">
+                            <span>Frais de livraison (${optionSelectionnee.value})</span>
+                            <span>+ ${prixLivraison.toLocaleString()} CFA</span>
+                        </div>
+                    `;
+                } else if (optionSelectionnee.value === "Regions-Hors-Sénégal") {
+                    htmlContent += `
+                        <div class="summary-line text-delivery">
+                            <span>Livraison (Régions/Hors SN)</span>
+                            <span>À calculer (Contactez-nous)</span>
+                        </div>
+                    `;
+                }
+
+                // Ligne du total dynamique
+                htmlContent += `
+                    <div class="summary-line total-line">
+                        <span>Total</span>
+                        <span>${totalGeneral.toLocaleString()} CFA</span>
+                    </div>
+                `;
+
+                // Injection du bouton de soumission
+                htmlContent += `
+                    <button type="submit" class="btn-confirm-order">Confirmer la commande</button>
+                    <p class="privacy-note">Vos données sont traitées avec soin par l'équipe KEYMA.</p>
+                `;
+
+                summaryContainer.innerHTML = htmlContent;
+
+                // Envoi des infos finales formatées pour Formspree
+                let texteFinalFormspree = detailTexte;
+                if (optionSelectionnee.value) {
+                    texteFinalFormspree += ` | Zone choisie : ${optionSelectionnee.text}`;
+                }
+                hiddenDetails.value = texteFinalFormspree;
+                hiddenTotal.value = totalGeneral.toLocaleString() + " CFA";
+            }
+
+            // Écouteur sur le changement de choix de l'adresse
+            zoneSelect.addEventListener('change', majAffichageCommande);
+
+            // Premier calcul automatique au chargement initial
+            majAffichageCommande();
         });
 
-        // Vider le panier après validation
+        // Nettoyage du panier local après la commande
         document.getElementById('order-form').addEventListener('submit', function() {
             localStorage.removeItem('keyma_cart');
         });
