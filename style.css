@@ -873,3 +873,10 @@ body:has(#menu-toggle:checked) {
     transform: translateY(-2px); /* Il s'élève très légèrement */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* L'ombre s'accentue au survol */
 }
+@media screen and (max-width: 600px) {
+    .btn-primary {
+        padding: 12px 35px;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+}
