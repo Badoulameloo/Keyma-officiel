@@ -193,7 +193,7 @@ body {
     text-align: center;
     position: relative;
     /* L'image est gérée de manière prioritaire par le HTML pour éviter tout conflit */
-    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
+    background: url('asset/img/heros1.jpeg') no-repeat center center/cover !important;
 }
 
 .hero-content {
