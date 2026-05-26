@@ -769,43 +769,60 @@ body {
         transform: translateX(70vw); 
     }
 
-    /* CORRECTION ICI : Grille de boutique mobile par 2 produits */
+    /* FORCE STRICTEMENT L'AFFICHAGE PAR 2 SUR MOBILE */
     .products-grid, .products, .shop-page .products {
-        grid-template-columns: repeat(2, 1fr) !important; /* Force l'affichage sur 2 colonnes */
-        gap: 15px !important; /* Espacement un peu plus serré et élégant pour le mobile */
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Force les 2 colonnes */
+        gap: 12px !important; /* Espace chic et optimisé pour les petits écrans */
         padding: 20px 0 !important;
+        max-width: 100% !important;
     }
     
     .product-card {
-        padding: 5px !important; /* Moins de marge interne pour gagner de la place */
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important; /* S'adapte parfaitement aux 2 colonnes */
+        padding: 8px !important; 
+        background: #fff !important;
     }
 
     .product-img-wrapper {
-        height: 220px !important; /* Hauteur ajustée pour que les cartes restent harmonieuses sur 2 colonnes */
+        width: 100% !important;
+        height: 200px !important; /* Hauteur idéale pour ne pas déformer la grille par 2 */
         margin-bottom: 10px !important;
     }
 
+    .product-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
     .product-info h3 {
-        font-size: 0.9rem; /* Titre légèrement plus petit pour éviter qu'il ne coupe */
-        margin: 0.5rem 0 0.2rem;
+        font-size: 0.85rem !important; /* Un peu plus petit pour que le nom tienne sur une ligne */
+        margin: 0.5rem 0 0.2rem !important;
     }
 
     .price {
-        font-size: 0.8rem;
-        margin-bottom: 0.8rem;
+        font-size: 0.8rem !important;
+        margin-bottom: 0.8rem !important;
     }
 
     .product-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
         max-width: 100% !important;
-        gap: 5px !important;
+        gap: 6px !important;
     }
 
     .btn-add-cart, .btn-buy-now {
-        padding: 8px !important; /* Boutons plus compacts pour mobile */
-        font-size: 0.7rem;
+        width: 100% !important;
+        padding: 10px 5px !important; /* Boutons fins et élégants pour mobile */
+        font-size: 0.65rem !important;
     }
 
-    /* Bouton Hero Mobile (inchangé) */
+    /* Bouton Hero Mobile */
     .btn-primary {
         padding: 12px 35px;
         font-size: 0.75rem;
