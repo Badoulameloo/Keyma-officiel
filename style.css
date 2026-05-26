@@ -751,24 +751,6 @@ body {
    BLOC RESPONSIVE NETTOYÉ ET STRUCTURÉ
    ========================================================================== */
 
-/* Écrans intermédiaires / Tablettes (max-width: 992px) */
-@media screen and (max-width: 992px) {
-    .products-grid, .products, .shop-page .products {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 25px !important;
-    }
-    .product-img-wrapper {
-        height: 320px !important;
-    }
-}
-
-/* Écrans Smartphones (max-width: 768px) */
-@media screen and (max-width: 768px) {
-    .hero {
-        height: 75vh;
-    }
-}
-
 /* Smartphones compacts (max-width: 600px) */
 @media screen and (max-width: 600px) {
     /* Menu Mobile Coulissant 70% */
@@ -787,19 +769,43 @@ body {
         transform: translateX(70vw); 
     }
 
-    /* Grille de boutique mobile */
+    /* CORRECTION ICI : Grille de boutique mobile par 2 produits */
     .products-grid, .products, .shop-page .products {
-        grid-template-columns: 1fr !important;
-        gap: 35px !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Force l'affichage sur 2 colonnes */
+        gap: 15px !important; /* Espacement un peu plus serré et élégant pour le mobile */
+        padding: 20px 0 !important;
     }
-    .product-img-wrapper {
-        height: 360px !important;
-    }
-    .product-actions {
-        max-width: 100% !important;
+    
+    .product-card {
+        padding: 5px !important; /* Moins de marge interne pour gagner de la place */
     }
 
-    /* Bouton Hero Mobile */
+    .product-img-wrapper {
+        height: 220px !important; /* Hauteur ajustée pour que les cartes restent harmonieuses sur 2 colonnes */
+        margin-bottom: 10px !important;
+    }
+
+    .product-info h3 {
+        font-size: 0.9rem; /* Titre légèrement plus petit pour éviter qu'il ne coupe */
+        margin: 0.5rem 0 0.2rem;
+    }
+
+    .price {
+        font-size: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .product-actions {
+        max-width: 100% !important;
+        gap: 5px !important;
+    }
+
+    .btn-add-cart, .btn-buy-now {
+        padding: 8px !important; /* Boutons plus compacts pour mobile */
+        font-size: 0.7rem;
+    }
+
+    /* Bouton Hero Mobile (inchangé) */
     .btn-primary {
         padding: 12px 35px;
         font-size: 0.75rem;
