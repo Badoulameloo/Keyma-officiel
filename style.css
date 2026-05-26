@@ -96,21 +96,24 @@ body {
 
 .menu {
     position: fixed;
-    top: 0; /* Change top à 0 pour qu'il prenne toute la hauteur depuis le haut de l'écran */
-    left: -100%;
-    width: 250px;
-    height: 100vh; /* Prend toute la hauteur du téléphone/PC */
-    background: #fff; /* Fond blanc opaque pour masquer l'image derrière lui */
+    top: 0;
+    left: -300px; /* On le cache à -300px au lieu de -100% */
+    width: 280px;  /* LARGEUR FIXE : Il ne prendra QUE 280 pixels, parfait sur PC comme sur Mobile */
+    height: 100vh;
+    background: #fff;
     flex-direction: column;
-    padding: 40px 20px;
-    gap: 20px;
+    padding: 80px 30px 40px 30px; /* Plus d'espace en haut pour ne pas coller à la croix */
+    gap: 25px;
     list-style: none;
-    
-    /* CORRECTION ICI : Le z-index doit être supérieur au reste du site */
-    z-index: 99999 !important; 
-    
+    z-index: 99999 !important;
     transition: left 0.3s ease-in-out;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1); /* Ajoute une ombre élégante sur la photo */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.05);
+}
+
+/* Quand on coche, le menu sort exactement de sa largeur */
+#menu-toggle:checked ~ .menu,
+#menu-toggle:checked ~ .navbar .menu {
+    left: 0;
 }
 
 .menu li { margin: 1.5rem 0; }
@@ -816,4 +819,8 @@ body:has(#menu-toggle:checked) {
 
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg); /* La barre du bas penche à -45° */
+}
+#menu-toggle:checked ~ body, 
+body:has(#menu-toggle:checked) {
+    transform: translateX(280px); /* Aligné pile sur la largeur du menu */
 }
