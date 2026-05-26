@@ -194,7 +194,7 @@ body {
     position: relative;
     
     /* CORRECTION : L'image est maintenant 100% nette, sans dégradé ni voile par-dessus */
-    background: url('asset/img/votre-image-accueil.jpg') no-repeat center center/cover !important;
+    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
 }
 
 .hero-content {
