@@ -183,40 +183,35 @@ body {
 }
 
 /* ==========================================================================
-   SECTION HERO - ACCUEIL (CORRECTION RADICALE POSITION ABSOLUE)
+   SECTION HERO - ACCUEIL (POSITION ABSOLUE STRICTE PC & MOBILE)
    ========================================================================== */
 .hero {
     height: 75vh;
-    position: relative; /* Indispensable pour servir de repère au bouton */
-    background: url('asset/img/heros1.jpeg') no-repeat center center/cover !important;
-    display: block !important; /* On désactive le flex de base pour éviter les conflits */
+    position: relative; 
+    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
+    display: block !important; 
 }
 
 .hero-content {
     position: absolute !important;
-    
-    /* 1. POSITIONNEMENT STRICT : On place le bloc tout en bas et centré */
-    bottom: 45px; /* Ajuste cette valeur en pixels pour monter ou descendre le bouton */
+    bottom: 50px; /* Position parfaite juste au-dessus du mot KEYMA doré */
     left: 50% !important;
-    transform: translateX(-50%) !important; /* Centre parfaitement le bouton horizontalement */
-    
+    transform: translateX(-50%) !important; 
     width: auto !important;
     max-width: 100% !important;
     padding: 0 !important;
     z-index: 10 !important;
 }
 
-/* ==========================================================================
-   BOUTON S'INTÉGRANT SUR LE HAUT DU SAC
-   ========================================================================== */
+/* LE BOUTON UNIQUE (PC & MOBILE) */
 .hero-content .btn-primary {
     display: inline-block !important;
-    padding: 10px 35px !important;
-    background-color: #ffffff !important; /* Fond blanc pour épouser le haut du sac */
+    padding: 10px 35px !important; /* Même taille partout */
+    background-color: #ffffff !important; 
     color: #1a1a1a !important;
     text-transform: uppercase !important;
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 0.75rem !important;
+    font-size: 0.75rem !important; /* Même taille de texte partout */
     font-weight: 500 !important;
     letter-spacing: 3px !important;
     text-decoration: none !important;
@@ -224,6 +219,7 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
     transition: all 0.3s ease-in-out !important;
     margin: 0 !important;
+    white-space: nowrap !important; /* Évite que le texte du bouton ne se coupe sur deux lignes */
 }
 
 .hero-content .btn-primary:hover {
@@ -784,16 +780,15 @@ body {
         left: 0;
     }
 
-    /* Décalage élégant de la page au clic */
     body:has(#menu-toggle:checked) {
         transform: translateX(70vw); 
     }
 
-    /* FORCE STRICTEMENT L'AFFICHAGE PAR 2 SUR MOBILE */
+    /* Grille de boutique mobile par 2 produits */
     .products-grid, .products, .shop-page .products {
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* Force les 2 colonnes */
-        gap: 12px !important; /* Espace chic et optimisé pour les petits écrans */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 12px !important; 
         padding: 20px 0 !important;
         max-width: 100% !important;
     }
@@ -801,14 +796,14 @@ body {
     .product-card {
         display: flex !important;
         flex-direction: column !important;
-        width: 100% !important; /* S'adapte parfaitement aux 2 colonnes */
+        width: 100% !important; 
         padding: 8px !important; 
         background: #fff !important;
     }
 
     .product-img-wrapper {
         width: 100% !important;
-        height: 200px !important; /* Hauteur idéale pour ne pas déformer la grille par 2 */
+        height: 200px !important; 
         margin-bottom: 10px !important;
     }
 
@@ -819,7 +814,7 @@ body {
     }
 
     .product-info h3 {
-        font-size: 0.85rem !important; /* Un peu plus petit pour que le nom tienne sur une ligne */
+        font-size: 0.85rem !important; 
         margin: 0.5rem 0 0.2rem !important;
     }
 
@@ -838,14 +833,9 @@ body {
 
     .btn-add-cart, .btn-buy-now {
         width: 100% !important;
-        padding: 10px 5px !important; /* Boutons fins et élégants pour mobile */
+        padding: 10px 5px !important; 
         font-size: 0.65rem !important;
     }
-
-    /* Bouton Hero Mobile */
-    .btn-primary {
-        padding: 12px 35px;
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-    }
+    
+    /* REMARQUE : Le bloc .btn-primary a été supprimé d'ici pour rester identique au PC */
 }
