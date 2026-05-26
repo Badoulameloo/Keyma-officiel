@@ -96,17 +96,21 @@ body {
 
 .menu {
     position: fixed;
-    top: 0;
+    top: 0; /* Change top à 0 pour qu'il prenne toute la hauteur depuis le haut de l'écran */
     left: -100%;
     width: 250px;
-    height: 100vh;
-    background: var(--blanc-pur);
-    display: flex;
+    height: 100vh; /* Prend toute la hauteur du téléphone/PC */
+    background: #fff; /* Fond blanc opaque pour masquer l'image derrière lui */
     flex-direction: column;
-    padding: 100px 40px;
+    padding: 40px 20px;
+    gap: 20px;
     list-style: none;
-    transition: 0.5s;
-    box-shadow: 10px 0 30px rgba(0,0,0,0.05);
+    
+    /* CORRECTION ICI : Le z-index doit être supérieur au reste du site */
+    z-index: 99999 !important; 
+    
+    transition: left 0.3s ease-in-out;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1); /* Ajoute une ombre élégante sur la photo */
 }
 
 .menu li { margin: 1.5rem 0; }
