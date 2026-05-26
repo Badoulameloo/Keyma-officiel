@@ -364,6 +364,48 @@ body {
     border: 1px solid #000;
     color: #fff;
 }
+/* --- STYLES POUR LES PRODUITS ÉPUISÉS --- */
+
+/* 1. Opacité subtile sur l'image pour montrer que le produit n'est pas disponible */
+.product-card.out-of-stock .product-img {
+    filter: grayscale(30%);
+    opacity: 0.6;
+}
+
+/* 2. Positionnement du badge "Épuisé" sur l'image */
+.product-img-wrapper {
+    position: relative; /* Indispensable pour placer le badge */
+}
+
+.stock-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #1a1a1a; /* Noir chic */
+    color: #fff; /* Texte blanc */
+    padding: 6px 15px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 3;
+    font-weight: 400;
+}
+
+/* 3. Nouveau bouton unique pour remplacer "Ajouter au panier" et "Acheter" */
+.btn-sold-out {
+    width: 100% !important;
+    padding: 12px !important;
+    background: #f4f4f4 !important; /* Gris très clair neutre */
+    border: 1px solid #e0e0e0 !important;
+    color: #999999 !important; /* Texte grisé */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: not-allowed; /* Change le curseur pour montrer qu'on ne peut pas cliquer */
+    text-align: center;
+}
 
 /* ==========================================================================
    PAGE À PROPOS (ABOUT)
@@ -838,4 +880,9 @@ body {
     }
     
     /* REMARQUE : Le bloc .btn-primary a été supprimé d'ici pour rester identique au PC */
+}
+.btn-add-cart, .btn-buy-now, .btn-sold-out {
+    width: 100% !important;
+    padding: 10px 5px !important; 
+    font-size: 0.65rem !important;
 }
