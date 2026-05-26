@@ -180,46 +180,46 @@ body {
 }
 
 /* ==========================================================================
-   SECTION HERO - ACCUEIL
+   SECTION HERO - ACCUEIL (CORRECTION IMAGE NETTE ET VIBRANTE)
    ========================================================================== */
-/* ==========================================================================
-   SECTION HERO - ACCUEIL (IMAGE NETTE SANS VOILE GRIS)
-   ========================================================================= */
 .hero {
-    height: 75vh; /* Hauteur parfaite pour laisser le footer respirer */
+    height: 75vh; /* Hauteur pour laisser le footer respirer sur PC */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
     
-    /* CORRECTION : L'image est maintenant 100% nette, sans dégradé ni voile par-dessus */
-    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
+    /* CORRECTION ICI : L'image est maintenant 100% nette, sans aucun voile gris ni dégradé par-dessus */
+    background: url('asset/img/votre-image-accueil-keyma.jpg') no-repeat center center/cover !important;
 }
 
 .hero-content {
     max-width: 800px;
     padding: 0 20px;
-    z-index: 2;
+    z-index: 2; /* S'assure que le texte reste au-dessus de l'image */
 }
 
 .hero-content h1 {
-    font-family: var(--font-titre);
-    font-size: 3.5rem;
+    font-family: var(--font-titre); /* Utilise Playfair Display */
+    font-size: 3.5rem; /* Grand titre luxueux */
     font-weight: 400;
-    color: #1a1a1a;
+    color: #1a1a1a; /* Texte noir léger pour le contraste */
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    /* ASTUCE LISIBILITÉ : Une légère lueur blanche invisible qui fait ressortir le texte noir */
+    
+    /* ASTUCE LISIBILITÉ : Une lueur blanche invisible qui fait ressortir le texte noir sur le fond */
     text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6); 
 }
 
 .hero-content p {
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Sous-titre plus discret */
     color: #1a1a1a;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    letter-spacing: 2px; /* Espacement chic style éditorial */
+    text-transform: uppercase; /* Capitales obligatoires */
     margin-bottom: 2rem;
+    
+    /* MÊME ASTUCE : Lueur blanche pour le contraste */
     text-shadow: 0 2px 8px rgba(255, 255, 255, 0.6);
 }
 /* --- EFFET D'APPARITION --- */
