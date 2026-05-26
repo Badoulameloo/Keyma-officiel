@@ -22,8 +22,7 @@ body {
     background-color: #fff;
     color: var(--noir-leger);
     overflow-x: hidden;
-    /* AJOUTE CETTE LIGNE : Permet une glissade fluide de toute la page */
-    transition: transform 0.3s ease-in-out; 
+    transition: transform 0.3s ease-in-out; /* Permet la glissade fluide de toute la page */
 }
 
 /* ==========================================================================
@@ -73,8 +72,10 @@ body {
     font-weight: 400;
 }
 
-/* --- MENU BURGER --- */
-#menu-toggle { display: none; }
+/* --- MENU BURGER RESPONSIVE & COULISSANT --- */
+#menu-toggle { 
+    display: none; 
+}
 
 .hamburger {
     cursor: pointer;
@@ -82,9 +83,10 @@ body {
     flex-direction: column;
     width: 25px;
     position: relative;
-    z-index: 1001;
+    z-index: 100000 !important; /* Passe devant le menu blanc */
     justify-content: space-between;
     height: 14px;
+    transition: all 0.3s ease-in-out;
 }
 
 .hamburger span {
@@ -98,9 +100,10 @@ body {
     position: fixed;
     top: 0;
     left: -300px; /* Caché par défaut à gauche */
-    width: 280px;  /* Largeur fixe parfaite sur PC */
+    width: 280px;  /* Largeur fixe idéale sur PC */
     height: 100vh;
     background: #fff;
+    display: flex;
     flex-direction: column;
     padding: 80px 30px 40px 30px;
     gap: 25px;
@@ -110,23 +113,7 @@ body {
     box-shadow: 5px 0 15px rgba(0,0,0,0.05);
 }
 
-/* Quand on coche, le menu sort exactement de sa largeur */
-#menu-toggle:checked ~ .menu,
-#menu-toggle:checked ~ .navbar .menu {
-    left: 0;
-}
-
-.menu li { margin: 1.5rem 0; }
-
-.menu a {
-    text-decoration: none;
-    color: #000;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-}
-
-/* États quand le menu est ouvert */
+/* --- LOGIQUE D'OUVERTURE ET ANIMATION DE LA CROIX --- */
 #menu-toggle:checked ~ .menu {
     left: 0;
 }
@@ -136,7 +123,23 @@ body {
 }
 
 #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked ~ .hamburger span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
+}
+
+.menu li { 
+    margin: 0; 
+}
+
+.menu a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
 }
 
 /* --- MENU UTILISATEUR DROPDOWN --- */
@@ -183,14 +186,13 @@ body {
    SECTION HERO - ACCUEIL (STYLE ULTRA-MINIMALISTE : BOUTON SEUL)
    ========================================================================== */
 .hero {
-    height: 75vh; /* Garde la même hauteur élégante */
+    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    
-    /* Ton image 100% nette et vibrante */
+    /* L'image est gérée de manière prioritaire par le HTML pour éviter tout conflit */
     background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
 }
 
@@ -201,13 +203,36 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* On ajuste juste la marge du bouton puisqu'il n'y a plus de texte au-dessus */
-.hero-content .btn-primary {
-    margin-top: 0 !important; 
+/* ==========================================================================
+   BOUTON EXPLORER LA COLLECTION (STYLE LUXE ORIGINAL)
+   ========================================================================== */
+.btn-primary {
+    display: inline-block;
+    padding: 16px 45px;          /* Un beau volume généreux et équilibré */
+    background-color: #ffffff;   /* Fond blanc pur opaque */
+    color: #1a1a1a;              /* Texte noir léger chic */
+    text-transform: uppercase;   /* Lettres capitales obligatoires */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;           /* Texte petit et raffiné */
+    font-weight: 400;
+    letter-spacing: 3px;         /* Grand espacement des lettres style éditorial */
+    text-decoration: none;       /* Supprime le soulignement par défaut */
+    border: 1px solid #1a1a1a;   /* Fine bordure noire ultra nette */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* L'ombre subtile qui le fait ressortir */
+    transition: all 0.3s ease-in-out; /* Transition fluide pour le survol */
+    margin-top: 0 !important;    /* Parfaitement centré car plus de texte au-dessus */
 }
-/* --- EFFET D'APPARITION --- */
+
+.btn-primary:hover {
+    background-color: #1a1a1a;   /* Le bouton devient noir au survol */
+    color: #ffffff;              /* Le texte passe en blanc */
+    transform: translateY(-2px); /* Il s'élève très légèrement */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* L'ombre s'accentue au survol */
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -220,27 +245,7 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVE HERO (ADAPTATION MOBILE)
-   ========================================================================== */
-@media screen and (max-width: 768px) {
-    .hero {
-        height: 75vh; /* Un peu plus court sur mobile pour voir le reste */
-    }
-    
-    .hero-content h1 {
-        font-size: 2.4rem; /* Réduction du titre pour que ça ne coupe pas mal */
-        margin-bottom: 1rem;
-    }
-    
-    .hero-content p {
-        font-size: 0.9rem;
-        margin-bottom: 2.5rem;
-        letter-spacing: 1px;
-    }
-}
-
-/* ==========================================================================
-   SECTION BOUTIQUE (CORRIGÉE)
+   SECTION BOUTIQUE
    ========================================================================== */
 .shop-page {
     max-width: 1200px;
@@ -261,10 +266,9 @@ body {
     margin-top: 1rem;
 }
 
-/* On cible plusieurs variantes de noms pour être sûr de bloquer la grille sur PC */
 .products-grid, .products, .shop-page .products {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* Fixe STRICTEMENT 3 colonnes */
+    grid-template-columns: repeat(3, 1fr) !important; /* Fixe STRICTEMENT 3 colonnes sur PC */
     gap: 40px !important; 
     padding: 40px 0 !important;
     max-width: 1200px !important;
@@ -279,12 +283,12 @@ body {
     background: #fff !important;
     padding: 15px !important;
     width: 100% !important;
-    height: auto !important; /* Supprime l'effet d'escalier */
+    height: auto !important;
 }
 
 .product-img-wrapper {
     width: 100% !important;
-    height: 400px !important; /* Hauteur fixe et propre pour PC */
+    height: 400px !important;
     overflow: hidden !important;
     margin-bottom: 20px !important;
     background-color: var(--blanc-casse);
@@ -315,7 +319,7 @@ body {
     gap: 10px !important;
     width: 100% !important;
     max-width: 200px !important;
-    margin-top: auto !important; /* Pousse les boutons tout en bas de la carte */
+    margin-top: auto !important;
 }
 
 .btn-add-cart, .btn-buy-now {
@@ -583,7 +587,6 @@ body {
     border-bottom: 1px solid var(--or-pale);
 }
 
-/* Méthodes de paiement (Wave, OM, Cash) */
 .payment-methods {
     display: flex;
     flex-direction: column;
@@ -739,19 +742,14 @@ body {
     color: #fff;
 }
 
-.auth-links-extra {
-    margin: 10px 0 20px 0;
-    text-align: right;
-}
-
 /* ==========================================================================
-   RESPONSIVE (PROPRE ET SÉPARÉ POUR ÉVITER LES BUGS)
+   BLOC RESPONSIVE NETTOYÉ ET STRUCTURÉ
    ========================================================================== */
 
-/* Écrans intermédiaires / Tablettes */
+/* Écrans intermédiaires / Tablettes (max-width: 992px) */
 @media screen and (max-width: 992px) {
     .products-grid, .products, .shop-page .products {
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 colonnes */
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 25px !important;
     }
     .product-img-wrapper {
@@ -759,10 +757,34 @@ body {
     }
 }
 
-/* Smartphones */
+/* Écrans Smartphones (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 75vh;
+    }
+}
+
+/* Smartphones compacts (max-width: 600px) */
 @media screen and (max-width: 600px) {
+    /* Menu Mobile Coulissant 70% */
+    .menu {
+        width: 70vw;
+        left: -75vw;
+        padding: 70px 20px 20px 20px;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        left: 0;
+    }
+
+    /* Décalage élégant de la page au clic */
+    body:has(#menu-toggle:checked) {
+        transform: translateX(70vw); 
+    }
+
+    /* Grille de boutique mobile */
     .products-grid, .products, .shop-page .products {
-        grid-template-columns: 2fr !important; /* 1 seule colonne */
+        grid-template-columns: 1fr !important;
         gap: 35px !important;
     }
     .product-img-wrapper {
@@ -771,98 +793,8 @@ body {
     .product-actions {
         max-width: 100% !important;
     }
-}
-/* ==========================================================================
-   EFFET COULISSANT : DÉCALAGE DE LA PAGE À L'OUVERTURE DU MENU
-   ========================================================================== */
 
-/* Quand le menu est ouvert, on pousse tout le body vers la droite */
-#menu-toggle:checked ~ body, 
-body:has(#menu-toggle:checked) {
-    transform: translateX(250px);
-}
-
-/* Optionnel : Si ton menu hamburger doit rester fixe à sa place d'origine pendant le décalage */
-#menu-toggle:checked ~ .navbar .hamburger {
-    /* Tu peux laisser ainsi pour qu'il suive le mouvement, ou ajuster si besoin */
-}
-/* ==========================================================================
-   ANIMATION ET VISIBILITÉ DE LA CROIX (FERMETURE)
-   ========================================================================== */
-
-/* 1. Force le bouton hamburger à rester au-dessus du menu ouvert */
-.hamburger {
-    position: relative;
-    z-index: 100000 !important; /* Passe devant le menu blanc */
-    transition: all 0.3s ease-in-out;
-}
-
-/* 2. Animation des trois barres pour former une croix (X) quand c'est coché */
-#menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg); /* La barre du haut penche à 45° */
-}
-
-#menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
-    opacity: 0; /* La barre du milieu disparaît */
-}
-
-#menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg); /* La barre du bas penche à -45° */
-}
-#menu-toggle:checked ~ body, 
-body:has(#menu-toggle:checked) {
-    transform: translateX(280px); /* Aligné pile sur la largeur du menu */
-}
-/* ==========================================================================
-   AJUSTEMENT RESPONSIVE MOBILE POUR LE MENU
-   ========================================================================== */
-@media screen and (max-width: 600px) {
-    .menu {
-        width: 70vw; /* Le menu ne prendra QUE 70% de la largeur du téléphone */
-        left: -75vw; /* On le cache un peu plus loin pour être sûr */
-        padding: 70px 20px 20px 20px; /* Légèrement plus compact */
-    }
-
-    /* Quand on coche sur mobile, le menu s'arrête à bord */
-    #menu-toggle:checked ~ .menu,
-    #menu-toggle:checked ~ .navbar .menu {
-        left: 0;
-    }
-
-    /* On décale le reste du site (la photo) exactement de la même valeur (70%) */
-    #menu-toggle:checked ~ body, 
-    body:has(#menu-toggle:checked) {
-        transform: translateX(70vw); 
-    }
-}
-/* ==========================================================================
-   BOUTON EXPLORER LA COLLECTION (STYLE LUXE ORIGINAL)
-   ========================================================================== */
-.btn-primary {
-    display: inline-block;
-    margin-top: 2.5rem;          /* Donne de l'espace sous le texte */
-    padding: 16px 45px;          /* Un beau volume généreux et équilibré */
-    background-color: #ffffff;   /* Fond blanc pur opaque */
-    color: #1a1a1a;              /* Texte noir léger chic */
-    text-transform: uppercase;   /* Lettres capitales obligatoires */
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;           /* Texte petit et raffiné */
-    font-weight: 400;
-    letter-spacing: 3px;         /* Grand espacement des lettres style éditorial */
-    text-decoration: none;       /* Supprime le soulignement par défaut */
-    border: 1px solid #1a1a1a;   /* Fine bordure noire ultra nette */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* L'ombre subtile qui le fait ressortir */
-    transition: all 0.3s ease-in-out; /* Transition fluide pour le survol */
-}
-
-/* Effet au survol (Hover) */
-.btn-primary:hover {
-    background-color: #1a1a1a;   /* Le bouton devient noir au survol */
-    color: #ffffff;              /* Le texte passe en blanc */
-    transform: translateY(-2px); /* Il s'élève très légèrement */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* L'ombre s'accentue au survol */
-}
-@media screen and (max-width: 600px) {
+    /* Bouton Hero Mobile */
     .btn-primary {
         padding: 12px 35px;
         font-size: 0.75rem;
