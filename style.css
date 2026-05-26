@@ -188,12 +188,17 @@ body {
 .hero {
     height: 75vh;
     display: flex;
-    align-items: center;
+    
+    /* 1. MODIFIE CETTE LIGNE (remplace center par flex-end) */
+    align-items: flex-end; 
+    
     justify-content: center;
     text-align: center;
     position: relative;
-    /* L'image est gérée de manière prioritaire par le HTML pour éviter tout conflit */
-    background: url('asset/img/heros1.jpeg') no-repeat center center/cover !important;
+    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
+
+    /* 2. AJOUTE CETTE LIGNE (pour gérer la hauteur du bouton par rapport au bas) */
+    padding-bottom: 80px; 
 }
 
 .hero-content {
