@@ -198,7 +198,7 @@ body {
     background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
 
     /* 2. AJOUTE CETTE LIGNE (pour gérer la hauteur du bouton par rapport au bas) */
-    padding-bottom: 80px; 
+    padding-bottom: 50px; 
 }
 
 .hero-content {
