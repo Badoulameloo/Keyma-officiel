@@ -191,7 +191,7 @@ body {
     position: relative;
     
     /* Ton image 100% nette et vibrante */
-    background: url('asset/img/votre-image-accueil-keyma.jpg') no-repeat center center/cover !important;
+    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
 }
 
 .hero-content {
