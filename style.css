@@ -183,21 +183,21 @@ body {
 }
 
 /* ==========================================================================
-   SECTION HERO - ACCUEIL (STYLE ULTRA-MINIMALISTE : BOUTON SEUL)
+   SECTION HERO - ACCUEIL (BOUTON S'INTÉGRANT SUR LE HAUT DU SAC)
    ========================================================================== */
 .hero {
     height: 75vh;
     display: flex;
     
-    /* 1. MODIFIE CETTE LIGNE (remplace center par flex-end) */
+    /* 1. Aligne le contenu tout en bas de la section */
     align-items: flex-end; 
     
     justify-content: center;
     text-align: center;
     position: relative;
-    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
+    background: url('asset/img/heros1.jpeg') no-repeat center center/cover !important;
 
-    /* 2. AJOUTE CETTE LIGNE (pour gérer la hauteur du bouton par rapport au bas) */
+    /* 2. Gère la distance parfaite pour poser le bouton juste au-dessus du mot KEYMA */
     padding-bottom: 50px; 
 }
 
@@ -208,9 +208,34 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 1s ease-in-out;
 }
 
+/* ==========================================================================
+   BOUTON SUR MESURE (S'ADAPTE SUR LE SAC BLANC)
+   ========================================================================== */
+.hero-content .btn-primary {
+    display: inline-block;
+    padding: 10px 35px;          /* Légèrement plus fin pour bien s'intégrer sur le sac */
+    background-color: #ffffff;   /* Fond blanc pour se fondre discrètement sur le sac */
+    color: #1a1a1a;              
+    text-transform: uppercase;   
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;          /* Raffiné et discret */
+    font-weight: 500;
+    letter-spacing: 3px;         
+    text-decoration: none;       
+    border: 1px solid #1a1a1a;   /* Ligne noire très fine et nette */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+    transition: all 0.3s ease-in-out; 
+    margin-top: 0 !important;    
+}
+
+/* Effet au survol */
+.hero-content .btn-primary:hover {
+    background-color: #1a1a1a;   
+    color: #ffffff;              
+    transform: translateY(-1px); 
+}
 /* ==========================================================================
    BOUTON EXPLORER LA COLLECTION (STYLE LUXE ORIGINAL)
    ========================================================================== */
