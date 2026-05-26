@@ -794,3 +794,26 @@ body:has(#menu-toggle:checked) {
 #menu-toggle:checked ~ .navbar .hamburger {
     /* Tu peux laisser ainsi pour qu'il suive le mouvement, ou ajuster si besoin */
 }
+/* ==========================================================================
+   ANIMATION ET VISIBILITÉ DE LA CROIX (FERMETURE)
+   ========================================================================== */
+
+/* 1. Force le bouton hamburger à rester au-dessus du menu ouvert */
+.hamburger {
+    position: relative;
+    z-index: 100000 !important; /* Passe devant le menu blanc */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 2. Animation des trois barres pour former une croix (X) quand c'est coché */
+#menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg); /* La barre du haut penche à 45° */
+}
+
+#menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
+    opacity: 0; /* La barre du milieu disparaît */
+}
+
+#menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg); /* La barre du bas penche à -45° */
+}
