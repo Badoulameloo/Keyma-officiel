@@ -180,45 +180,32 @@ body {
 }
 
 /* ==========================================================================
-   SECTION HERO - ACCUEIL (CORRECTION IMAGE NETTE ET VIBRANTE)
+   SECTION HERO - ACCUEIL (STYLE ULTRA-MINIMALISTE : BOUTON SEUL)
    ========================================================================== */
 .hero {
-    height: 75vh; /* Hauteur pour laisser le footer respirer sur PC */
+    height: 75vh; /* Garde la même hauteur élégante */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
     
-    /* CORRECTION ICI : L'image est maintenant 100% nette, sans aucun voile gris ni dégradé par-dessus */
-    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
+    /* Ton image 100% nette et vibrante */
+    background: url('asset/img/votre-image-accueil-keyma.jpg') no-repeat center center/cover !important;
 }
 
 .hero-content {
     max-width: 800px;
     padding: 0 20px;
-    z-index: 2; /* S'assure que le texte reste au-dessus de l'image */
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.hero-content h1 {
-    font-family: var(--font-titre); /* Utilise Playfair Display */
-    font-size: 3.5rem; /* Grand titre luxueux */
-    font-weight: 400;
-    color: #1a1a1a; /* Texte noir léger pour le contraste */
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    
-   
-}
-
-.hero-content p {
-    font-size: 0.9rem; /* Sous-titre plus discret */
-    color: #1a1a1a;
-    letter-spacing: 2px; /* Espacement chic style éditorial */
-    text-transform: uppercase; /* Capitales obligatoires */
-    margin-bottom: 2rem;
-    
- 
+/* On ajuste juste la marge du bouton puisqu'il n'y a plus de texte au-dessus */
+.hero-content .btn-primary {
+    margin-top: 0 !important; 
 }
 /* --- EFFET D'APPARITION --- */
 @keyframes fadeIn {
