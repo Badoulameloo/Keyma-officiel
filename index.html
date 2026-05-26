@@ -8,18 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
-        /* Style ciblé pour l'image de fond de la page d'accueil */
+        /* Style de la section d'accueil - Image 100% nette */
         .hero {
-            /* 1. Remplace 'asset/img/ton-image.jpeg' par le nom exact de ton image de fond */
-            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
-                        url('asset/img/hero.jpeg') no-repeat center center/cover !important;
+            /* CORRECTION : Suppression totale du voile gris/blanc linéaire */
+            background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
             
-            height: 80vh; /* Ajuste la hauteur pour que ce soit élégant sur PC */
+            height: 80vh; /* Hauteur élégante sur PC */
             display: flex;
             align-items: center;
             justify-content: center;
-
-            
         }
     </style>
 </head>
@@ -52,10 +49,11 @@
 
     <main>
         <section class="hero">
-    <div class="hero-content">
-        <a href="shop.html" class="btn-primary">Explorer la collection</a>
-    </div>
-</section>
+            <div class="hero-content">
+                <a href="shop.html" class="btn-primary">Explorer la collection</a>
+            </div>
+        </section>
+    </main>
        
 
     <script>
