@@ -191,7 +191,7 @@ body {
     position: relative;
     
     /* CORRECTION ICI : L'image est maintenant 100% nette, sans aucun voile gris ni dégradé par-dessus */
-    background: url('asset/img/votre-image-accueil-keyma.jpg') no-repeat center center/cover !important;
+    background: url('asset/img/hero.jpeg') no-repeat center center/cover !important;
 }
 
 .hero-content {
