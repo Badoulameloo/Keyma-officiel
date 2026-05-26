@@ -846,3 +846,30 @@ body:has(#menu-toggle:checked) {
         transform: translateX(70vw); 
     }
 }
+/* ==========================================================================
+   BOUTON EXPLORER LA COLLECTION (STYLE LUXE ORIGINAL)
+   ========================================================================== */
+.btn-primary {
+    display: inline-block;
+    margin-top: 2.5rem;          /* Donne de l'espace sous le texte */
+    padding: 16px 45px;          /* Un beau volume généreux et équilibré */
+    background-color: #ffffff;   /* Fond blanc pur opaque */
+    color: #1a1a1a;              /* Texte noir léger chic */
+    text-transform: uppercase;   /* Lettres capitales obligatoires */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;           /* Texte petit et raffiné */
+    font-weight: 400;
+    letter-spacing: 3px;         /* Grand espacement des lettres style éditorial */
+    text-decoration: none;       /* Supprime le soulignement par défaut */
+    border: 1px solid #1a1a1a;   /* Fine bordure noire ultra nette */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* L'ombre subtile qui le fait ressortir */
+    transition: all 0.3s ease-in-out; /* Transition fluide pour le survol */
+}
+
+/* Effet au survol (Hover) */
+.btn-primary:hover {
+    background-color: #1a1a1a;   /* Le bouton devient noir au survol */
+    color: #ffffff;              /* Le texte passe en blanc */
+    transform: translateY(-2px); /* Il s'élève très légèrement */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* L'ombre s'accentue au survol */
+}
